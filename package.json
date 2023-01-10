@@ -1,7 +1,8 @@
 {
   "name": "admin_panel",
   "proxy": "http://127.0.0.1:8000",
-  "homepage": "/admin",
+  "type": "module",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,10 +16,14 @@
     "autosize": "^5.0.1",
     "axios": "^0.24.0",
     "chart.js": "^3.7.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
     "dayjs": "^1.10.7",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
+    "express": "^4.18.2",
     "firebase": "^9.6.0",
+    "helmet": "^6.0.1",
     "jodit-react": "^1.1.16",
     "jwt-decode": "^3.1.2",
     "material-ui-dropzone": "^3.5.0",
@@ -47,7 +52,8 @@
     "start": "react-scripts  start",
     "build": "react-scripts  build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node server.js"
   },
   "eslintConfig": {
     "extends": [
