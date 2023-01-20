@@ -1,26 +1,26 @@
-import axios from "axios";
-import  Axios  from "axios";
-import { ALL_USER_FAIL, ALL_USER_REQUEST, ALL_USER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS,} from "../constants/UserConstants";
 
+import { endpoint } from "../config/endpoinsts";
+import { ALL_USER_FAIL, ALL_USER_REQUEST, ALL_USER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS,} from "../constants/UserConstants";
+import { axiosRequest } from "../http/request";
 
 
 
 export const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
   try {
-    const { data } = await Axios.post('/user', { email, password });
+    const { data } = await axiosRequest.post("/user", { email, password });
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     localStorage.setItem("userInfo", JSON.stringify(data));
-    const expiry = {time: Date.now()+86400000}
-    localStorage.setItem("userInfoExpiry", JSON.stringify(expiry))
+    const expiry = { time: Date.now() + 86400000 };
+    localStorage.setItem("userInfoExpiry", JSON.stringify(expiry));
   } catch (error) {
     dispatch({
       type: USER_SIGNIN_FAIL,
       payload:
         // error.response && error.response.data.message
         //   ?
-           error.response.data.message
-          // : error.message,
+        error.response.data.message,
+      // : error.message,
     });
   }
 };
@@ -31,14 +31,13 @@ export const allUserAction = () => async (dispatch) => {
   });
   try {
    
-    const {data} = await axios.get('/api/user', {
-        
+    const { data } = await axiosRequest.get(endpoint.user.all, {
       headers: {
-        Accept:"appllication/json",
-        "Content-Type":"appllication/json"
+        Accept: "appllication/json",
+        "Content-Type": "appllication/json",
       },
-      credentials:"include"
-    })
+      credentials: "include",
+    });
     // const data = await res.json();
     dispatch({ type: ALL_USER_SUCCESS, payload: data });
   } catch (error) {

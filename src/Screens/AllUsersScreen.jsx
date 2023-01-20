@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -20,6 +20,8 @@ import Button from '@mui/material/Button';
 import Slide from '@mui/material/Slide';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+import { axiosRequest } from '../http/request';
+import { endpoint } from '../config/endpoinsts';
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
@@ -60,7 +62,7 @@ function AllUsersScreen() {
     if (postId) {
       window.alert('Are you sure?');
       try {
-        const res = await axios.delete(`/api/user/${postId}`);
+        const res = await axiosRequest.delete(endpoint.user.delete.replace(':id' , postId));
         if (res.status === 200) {
           dispatch(allUserAction());
           navigate('/admin/all_users');

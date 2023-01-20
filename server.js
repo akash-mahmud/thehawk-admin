@@ -48,11 +48,11 @@ app.use(
 );
 app.use(compression());
 //Admin panel router
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "dist")));
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
-const port = normalizePort(process.env.PORT || "5173");
+const port = normalizePort(process.env.PORT || "3001");
 app.set("port", port);
 const server = http.createServer(app);
 server.listen(port);

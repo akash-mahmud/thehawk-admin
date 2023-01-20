@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
@@ -187,7 +187,7 @@ function AddPost() {
     setadPostLoad(true);
     e.preventDefault();
     e.persist();
-    const res = await axios.post('/api/post', {
+    const res = await axiosRequest.post(endpoint.post.create, {
       title,
       isBreaking,
       text,
@@ -256,8 +256,8 @@ function AddPost() {
 
   const mediaSearch = async () => {
     // searchMediaUrl;
-    const { data } = await axios.post(
-      `/api/media/?search=${searchMediaUrl}`,
+    const { data } = await axiosRequest.post(
+      `${endpoint.media.getAll}/?search=${searchMediaUrl}`,
       {}
     );
     console.log(data);

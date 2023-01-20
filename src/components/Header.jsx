@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { endpoint } from "../config/endpoinsts";
+
+import { axiosRequest } from "../http/request";
 function Header() {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -8,9 +10,7 @@ function Header() {
   const logout = async () => {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("userInfoExpiry");
-    const responsce = await axios.get("/api/user/me/logout", {
-      withCredentials: true,
-    });
+    const responsce = await axiosRequest.get(endpoint.user.logout);
 
     if (responsce.data.logout) {
       navigate("/admin/login");

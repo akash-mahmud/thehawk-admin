@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import { axiosRequest } from '../http/request';
+import { endpoint } from '../config/endpoinsts';
 function AddCategory() {
   const navigate = useNavigate();
 
@@ -29,7 +31,7 @@ function AddCategory() {
   const categoryDataSubmit = async (e) => {
     e.preventDefault();
     setadPostLoad(true);
-    const res = await axios.post('/api/category', {
+    const res = await axiosRequest.post(endpoint.category.create, {
       title,
       text,
       position,

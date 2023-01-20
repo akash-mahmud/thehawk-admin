@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { listpost } from "../actions/postActions";
@@ -12,6 +12,8 @@ import Sidebar from "../components/Sidebar";
 import dayjs from "dayjs";
 import { listCategory } from "../actions/categoryActions";
 import { listSubCategory } from "../actions/subCategoryAction";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 function AllPostScreenForAuthor() {
   const [userData, setUserData] = useState();
   let [hasMore, sethasMore] = useState(true);
@@ -48,7 +50,7 @@ function AllPostScreenForAuthor() {
     if (postId) {
       try {
         window.alert("Are you sure?");
-        const res = await axios.delete(`/api/post/${postId}`);
+        const res = await axiosRequest.delete(endpoint.post.delete.replace(':id', postId));
         if (res) {
           dispatch(listpost());
           // navigate("/");

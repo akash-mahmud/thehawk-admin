@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
@@ -14,6 +14,8 @@ import dayjs from "dayjs";
 
 import { listCategory } from "../actions/categoryActions";
 import { listSubCategory } from "../actions/subCategoryAction";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 
 function AllPost() {
   let [hasMore, sethasMore] = useState(true);
@@ -27,7 +29,7 @@ function AllPost() {
   const adminPostData = async () => {
     setpostLoading(true)
     try {
-      const { data } = await axios.get(`/api/post/${'admin'}/?page=1`);
+      const { data } = await axiosRequest.get(`${endpoint.post.adminPost}/?page=1`);
 
       setSort(data);
       setallLoadedPost(data);
@@ -63,7 +65,7 @@ function AllPost() {
     if (postId) {
       try {
         window.alert("Are you sure?");
-        const res = await axios.delete(`/api/post/${postId}`);
+        const res = await axiosRequest.delete(endpoint.post.delete.replace(':id', postId));
         if (res) {
           dispatch(listpost());
 
@@ -118,7 +120,7 @@ function AllPost() {
 
       setSort(allLoadedPost);
     } else {
-      const { data } = await axios.get(`/api/category/${category}/?page=1`);
+      const { data } = await axiosRequest.get(`/category/${category}/?page=1`);
       if (data.length < 20) {
         sethasMore(() => false);
       }
@@ -137,8 +139,8 @@ function AllPost() {
 
       setSort(allLoadedPost);
     } else {
-      const { data } = await axios.get(
-        `/api/subCategory/${subCategory}/?page=1`
+      const { data } = await axiosRequest.get(
+        `/subCategory/${subCategory}/?page=1`
       );
 
       if (data.length < 5) {
@@ -154,7 +156,7 @@ function AllPost() {
 
 
 
-    const data = await axios.get(`/api/post/${'admin'}/?page=${pageNumber}`);
+    const data = await axiosRequest.get(`/post/${'admin'}/?page=${pageNumber}`);
     if (data.status === 200) {
       if (data.data.length < 20) {
         sethasMore(() => false);
@@ -170,8 +172,8 @@ function AllPost() {
 
   const loadNextCAtFilterPost = async () => {
 
-    const { data, status } = await axios.get(
-      `/api/category/${catId}/?page=${catPage}`
+    const { data, status } = await axiosRequest.get(
+      `/category/${catId}/?page=${catPage}`
     );
     if (status === 200) {
       console.log(data.length);
@@ -186,8 +188,8 @@ function AllPost() {
   }
   const loadNextsubCAtFilterPost = async () => {
 
-    const { data, status } = await axios.get(
-      `/api/subCategory/${subcatId}/?page=${SubcatPage}`
+    const { data, status } = await axiosRequest.get(
+      `/subCategory/${subcatId}/?page=${SubcatPage}`
     );
     if (status === 200) {
       console.log(data.length);

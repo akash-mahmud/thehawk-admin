@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
@@ -9,6 +9,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { Button, Input } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { allUserAction } from "../actions/userActions";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 function UpdateUserScreen() {
     const Navigate = useNavigate();
  
@@ -58,7 +60,7 @@ function UpdateUserScreen() {
   const [load, setLoad] = useState();
   const postDataSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.patch(`/api/user/${id.id}`, {
+    const res = await axiosRequest.patch(endpoint.user.update.replace(':id', id.id), {
       name,
       email,
       password,
@@ -84,20 +86,24 @@ function UpdateUserScreen() {
       Navigate('/admin/all_users');
     }
   };
-   const imageHandler = async (e) => {
-     const file = e.target.files[0];
-     setLoad(true);
-     const formdata = new FormData();
-     formdata.append('file', file);
-     formdata.append('upload_preset', 'thehawk');
-     const res = await axios.post(
-       'https://api.cloudinary.com/v1_1/thehawk/upload',
-       formdata
-     );
+  const imageHandler = async (e) => {
+    const file = e.target.files[0];
+    setLoad(true);
+    const formdata = new FormData();
+    formdata.append('file', file);
 
-     setAvatar(res.data.secure_url);
-     setLoad(false);
-   };
+
+    const { data } = await axiosRequest.post(
+      endpoint.media.single,
+      formdata
+    );
+
+
+    toast.success('Uploaded')
+
+    setAvatar(data?.url);
+    setLoad(false);
+  };
 
 
   useEffect(() => {

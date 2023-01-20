@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 const SiteInfo = () => {
   const [loading, setloading] = useState(false);
   const [hasAddedAlready, sethasAddedAlready] = useState(true);
@@ -11,7 +13,7 @@ const SiteInfo = () => {
   const navigate = useNavigate();
   const loadData = async () => {
     try {
-      const { data } = await axios.get("/api/siteinfo");
+      const { data } = await axiosRequest.get(endpoint.siteInfo.get);
       if (!data) {
         sethasAddedAlready(false);
       } else {
@@ -30,9 +32,9 @@ const SiteInfo = () => {
 
     try {
       if (hasAddedAlready) {
-        await axios.patch("/api/siteinfo", siteinfo);
+        await axiosRequest.patch(endpoint.siteInfo.add, siteinfo);
       } else {
-        await axios.post("/api/siteinfo", siteinfo);
+        await axiosRequest.post(endpoint.siteInfo.update, siteinfo);
       }
 
       setloading(false);

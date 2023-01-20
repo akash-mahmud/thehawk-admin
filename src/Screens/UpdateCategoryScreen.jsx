@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import { useNavigate, useParams } from 'react-router-dom';
 
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
 import { listCategory } from '../actions/categoryActions';
+import { axiosRequest } from '../http/request';
+import { endpoint } from '../config/endpoinsts';
 function UpdateCategoryScreen() {
   const navigate = useNavigate();
 
@@ -62,7 +64,7 @@ function UpdateCategoryScreen() {
 
   const categoryDataSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.patch(`/api/category/${id.id}`, {
+    const res = await axiosRequest.patch(endpoint.category.update.replace(':id', id.id), {
       position,
       title,
       text,

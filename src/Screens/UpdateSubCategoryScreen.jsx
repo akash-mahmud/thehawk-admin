@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,8 @@ import { listCategory } from "../actions/categoryActions";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { listSubCategory } from "../actions/subCategoryAction";
+import { endpoint } from "../config/endpoinsts";
+import { axiosRequest } from "../http/request";
 function UpdateSubCategoryScreen() {
   const navigate = useNavigate();
 
@@ -66,7 +68,7 @@ function UpdateSubCategoryScreen() {
 
   const categoryDataSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.patch(`/api/subCategory/${id.id}`, {
+    const res = await axiosRequest.patch(endpoint.subcategory.update.replace(':id', id.id), {
       title,
       category,
       categoryId,

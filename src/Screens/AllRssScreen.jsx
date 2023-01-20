@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,8 @@ import { listRss } from "../actions/rssActions";
 import ClipLoader from "react-spinners/ClipLoader";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 
 function AllRssScreen() {
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ function AllRssScreen() {
     if (postId) {
       window.alert("Are you sure?");
       try {
-        const res = await axios.delete(`/api/rss/${postId}`);
+        const res = await axiosRequest.delete(endpoint.rss.delete.replace(':id' , postId));
         if (res) {
           dispatch(listRss());
           navigate('/admin/all_rss');

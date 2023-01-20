@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import { Button, Input } from "@mui/material";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
+import { toast } from "react-toastify";
 function AddUserScreen() {
   const Navigate = useNavigate();
 
@@ -27,7 +30,7 @@ function AddUserScreen() {
   const postDataSubmit = async (e) => {
     e.preventDefault();
     setadPostLoad(true);
-    const res = await axios.post('/api/user/register', {
+    const res = await axiosRequest.post(endpoint.user.register, {
       name,
       email,
       password,
@@ -60,13 +63,17 @@ function AddUserScreen() {
       setLoad(true);
       const formdata = new FormData();
       formdata.append('file', file);
-      formdata.append('upload_preset', 'thehawk');
-      const res = await axios.post(
-        'https://api.cloudinary.com/v1_1/thehawk/upload',
+
+
+      const { data } = await axiosRequest.post(
+        endpoint.media.single,
         formdata
       );
 
-      setAvatar(res.data.secure_url);
+
+      toast.success('Uploaded')
+
+      setAvatar(data?.url);
       setLoad(false);
     };
 

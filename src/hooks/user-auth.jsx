@@ -1,6 +1,7 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 
 import { toast } from 'react-toastify';
+import { endpoint } from "../config/endpoinsts";
 import { axiosRequest } from "../http/request";
 
 const authContext = createContext();
@@ -23,9 +24,7 @@ function useProvideAuth() {
   const [loadingUser, setLoadingUser] = useState(true);
   const getUser = async () => {
     try {
-      const res = await axiosRequest.get(`/user/me`, {
-        withCredentials: true,
-      });
+      const res = await axiosRequest.get(endpoint.user.auth);
       if (res.data) {
         setUser(res.data);
       } else {
@@ -43,7 +42,7 @@ function useProvideAuth() {
   }, [])
 
   const signin = (username, password, cb) => {
-    return axiosRequest.post('/user', {
+    return axiosRequest.post(endpoint.user.login, {
 
 
       email: username,
@@ -54,9 +53,7 @@ function useProvideAuth() {
     }).then((res) => {
       if (res.data) {
 
-        axiosRequest.get(`/user/me`, {
-
-        }).then((res) => {
+        axiosRequest.get(endpoint.user.auth).then((res) => {
           setUser(res.data);
           cb();
         });

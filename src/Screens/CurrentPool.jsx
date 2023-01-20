@@ -1,13 +1,15 @@
-import axios from "axios";
+
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import { endpoint } from "../config/endpoinsts";
+import { axiosRequest } from "../http/request";
 
 const CurrentPool = () => {
   const [pool, setpool] = useState({});
   const loadData = async () => {
     try {
-      const { data } = await axios.get("/api/pool");
+      const { data } = await axiosRequest.get(endpoint.pool.currentPool);
       setpool(data);
     } catch (error) { }
   };

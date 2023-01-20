@@ -1,25 +1,30 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { endpoint } from "../config/endpoinsts";
+import { axiosRequest } from "../http/request";
+import { toast } from "react-toastify";
 export default function SmartEditor({ userInfo, setuserInfo }) {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const uploadImageCallBack = async (file) => {
     const formdata = new FormData();
     formdata.append("file", file);
-    formdata.append("upload_preset", "stishio");
-    const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/mahmudakash177/upload",
+
+
+    const { data } = await axiosRequest.post(
+      endpoint.media.single,
       formdata
     );
 
-    console.log(res.data.secure_url);
-    return { data: { link: res.data.secure_url } };
+
+    toast.success('Uploaded')
+    return { data: { link: data?.url } };
   };
 
   return (

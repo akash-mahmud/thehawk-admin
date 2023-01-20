@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useDispatch, useSelector } from "react-redux";
 import { styled } from "@mui/material/styles";
 
@@ -22,6 +22,9 @@ import Slide from "@mui/material/Slide";
 import { listpost } from "../actions/postActions";
 import { allUserAction } from "../actions/userActions";
 import { useAuth } from "../hooks/user-auth";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
+import { toast } from "react-toastify";
 
 // import "./TextEditor.css";
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -100,7 +103,7 @@ function UpdateScreen() {
       behavior: "smooth",
     });
     setloadingData(true);
-    const { data, status } = await axios.get(`/api/singlepost/${id.id}`);
+    const { data, status } = await axiosRequest.get(endpoint.post.getById.replace(':id', id.id));
     if (status === 200) {
       setloadingData(false);
     }
@@ -166,14 +169,15 @@ function UpdateScreen() {
     const file = e.target.files[0];
     setLoad(true);
     const formdata = new FormData();
-    formdata.append("file", file);
-    formdata.append("upload_preset", "thehawk");
-    const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/thehawk/upload",
+    formdata.append('file', file);
+
+    const { data } = await axiosRequest.post(
+      endpoint.media.single,
       formdata
     );
 
-    setImage(res.data.secure_url);
+    setImage(data?.url);
+    toast.success('Uploaded')
     setLoad(false);
   };
 
@@ -218,7 +222,7 @@ function UpdateScreen() {
   const postDataSubmit = async (e) => {
     e.preventDefault();
     e.persist();
-    const res = await axios.patch(`/api/post/${id.id}`, {
+    const res = await axiosRequest.patch(endpoint.post.update.replace(':id', id.id), {
       title,
       text,
       image,
@@ -284,8 +288,8 @@ function UpdateScreen() {
 
   const mediaSearch = async () => {
     // searchMediaUrl;
-    const { data } = await axios.post(
-      `/api/media/?search=${searchMediaUrl}`,
+    const { data } = await axiosRequest.post(
+      `${endpoint.media.getAll}/?search=${searchMediaUrl}`,
       {}
     );
     console.log(data);

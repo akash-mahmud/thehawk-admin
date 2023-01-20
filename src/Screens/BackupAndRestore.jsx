@@ -3,9 +3,11 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import RestoreIcon from "@mui/icons-material/Restore";
-import axios from "axios";
+
 import ClipLoader from "react-spinners/ClipLoader";
 import Alert from '@mui/material/Alert';
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 
 export default function BackupAndRestore() {
   const [restoreinput, setrestoreinput] = useState(false);
@@ -21,7 +23,7 @@ export default function BackupAndRestore() {
     const formData = new FormData();
     formData.append("database", databaseFile);
 
-    const res = await axios.post("/api/restore/backup", formData, {
+    const res = await axiosRequest.post(endpoint.database.restore, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -41,7 +43,7 @@ export default function BackupAndRestore() {
 
   const backup = async () => {
     setbackupLoading(true);
-    const res = await axios.post("/api/restore/download", {});
+    const res = await axiosRequest.post(endpoint.database.backup, {});
 
     if (res.data.path) {
       setbackupLoading(false);

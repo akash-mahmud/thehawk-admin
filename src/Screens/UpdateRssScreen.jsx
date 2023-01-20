@@ -4,8 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { listCategory } from "../actions/categoryActions";
-import axios from "axios";
+
 import { listRss } from "../actions/rssActions";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 
 function UpdateRssScreen() {
   const Navigate = useNavigate();
@@ -48,7 +50,7 @@ function UpdateRssScreen() {
 
   const postDataSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.patch(`/api/rss/${id.id}`, {
+    const res = await axiosRequest.patch(endpoint.rss.update.replace(':id', id.id), {
       title,
 
       url,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,8 @@ import { listCategory } from "../actions/categoryActions";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import ClipLoader from 'react-spinners/ClipLoader';
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 
 function AddSubCategory() {
 
@@ -42,7 +44,7 @@ function AddSubCategory() {
   const categoryDataSubmit = async (e) => {
     setadPostLoad(true);
     e.preventDefault();
-    const res = await axios.post('/api/subCategory', {
+    const res = await axiosRequest.post(endpoint.subcategory.create, {
       title,
       category,
       categoryId,

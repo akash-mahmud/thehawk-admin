@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -9,6 +9,8 @@ import Sidebar from "../components/Sidebar";
 import { listCategory } from "../actions/categoryActions";
 import { listpost } from "../actions/postActions";
 import { listSubCategory } from "../actions/subCategoryAction";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 
 function AllSubCategoryScreen() {
   const navigate = useNavigate();
@@ -32,7 +34,7 @@ function AllSubCategoryScreen() {
     if (postId) {
       window.alert("Are you sure?");
       try {
-        const res = await axios.delete(`/api/subCategory/${postId}`);
+        const res = await axiosRequest.delete(endpoint.subcategory.delete.replace(':id' , postId));
         if (res) {
           navigate('/admin/all/sub_category');
         }

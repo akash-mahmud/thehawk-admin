@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { v4 as uuidv4 } from "uuid";
-import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
+import { axiosRequest } from '../http/request';
+import { endpoint } from '../config/endpoinsts';
 const AddPool = () => {
   const [loading, setloading] = useState(false)
   const [pool, setpool] = useState({
@@ -53,7 +55,7 @@ const AddPool = () => {
         ],
       };
 
-      await axios.post('/api/pool', formatData)
+      await axiosRequest.post(endpoint.pool.create, formatData)
       setloading(false);
       navigate('/admin/dashboard');
     } catch (error) {

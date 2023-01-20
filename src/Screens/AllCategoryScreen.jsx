@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { listCategory } from "../actions/categoryActions";
 import { listpost } from "../actions/postActions";
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 
 function AllCategoryScreen() {
   // const [data, setData] = useState()
@@ -32,7 +34,7 @@ function AllCategoryScreen() {
     if (postId) {
       window.alert("Are you sure?");
       try {
-        const res = await axios.delete(`/api/category/${postId}`);
+        const res = await axiosRequest.delete(endpoint.category.delete.replace(':id', postId));
         if (res) {
           navigate('/admin/dashboard');
         }

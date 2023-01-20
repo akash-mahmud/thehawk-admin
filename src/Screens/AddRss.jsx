@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { listCategory } from "../actions/categoryActions";
-import axios from "axios";
+
 import ClipLoader from 'react-spinners/ClipLoader';
+import { axiosRequest } from "../http/request";
+import { endpoint } from "../config/endpoinsts";
 
 function AddRss() {
   const Navigate = useNavigate();
@@ -38,7 +40,7 @@ function AddRss() {
   const postDataSubmit = async (e) => {
     setadPostLoad(true)
     e.preventDefault();
-    const res = await axios.post('/api/rss_feed', {
+    const res = await axiosRequest.post(endpoint.rss.create, {
       title,
 
       url,
