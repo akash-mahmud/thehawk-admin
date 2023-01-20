@@ -33,6 +33,7 @@ app.use(
         "http://localhost:8000",
         "http://localhost:8000",
         "https://admin.thehawk.in",
+        "https://api.thehawk.in",
       ],
       "style-src": ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
       "frame-src": ["'self'", "js.stripe.com"],
