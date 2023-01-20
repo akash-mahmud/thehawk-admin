@@ -8,8 +8,8 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { listSubCategory } from "../actions/subCategoryAction";
 function UpdateSubCategoryScreen() {
-      const navigate = useNavigate();
- 
+  const navigate = useNavigate();
+
 
 
   const [category, setCategory] = useState("");
@@ -20,18 +20,18 @@ function UpdateSubCategoryScreen() {
   const [pageTitle, setPageTitle] = useState("");
   const [pageKeywords, setPageKeywords] = useState("");
   const dispatch = useDispatch();
-    const subCategoryList = useSelector((state) => state.subCategoryList);
-    const { subCategories } = subCategoryList;
-      const categoryList = useSelector((state) => state.categoryList);
-      const { categories } = categoryList;
+  const subCategoryList = useSelector((state) => state.subCategoryList);
+  const { subCategories } = subCategoryList;
+  const categoryList = useSelector((state) => state.categoryList);
+  const { categories } = categoryList;
   useEffect(() => {
-  
-      dispatch(listCategory());
-    
-   
-      dispatch(listSubCategory());
-    
-  }, [dispatch ]);
+
+    dispatch(listCategory());
+
+
+    dispatch(listSubCategory());
+
+  }, [dispatch]);
 
   const [categoryId, setCategoryId] = useState("");
 
@@ -88,62 +88,62 @@ function UpdateSubCategoryScreen() {
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Add Sub category</h4>
+                  <div className="col-12 grid-margin stretch-card">
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title">Add Sub category</h4>
 
-                        <form class="forms-sample">
-                          <div class="form-group">
+                        <form className="forms-sample">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">Title</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="Title"
                               onChange={(e) => setTitle(e.target.value)}
                               value={title}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Page title
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="enter page title"
                               onChange={(e) => setPageTitle(e.target.value)}
                               value={pageTitle}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Page keywords
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="use comma to type multiple keywords"
                               onChange={(e) => setPageKeywords(e.target.value)}
                               value={pageKeywords}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlTextarea1">
                               Page description
                             </label>
                             <textarea
-                              class="form-control"
+                              className="form-control"
                               id="exampleFormControlTextarea1"
                               rows="3"
                               onChange={(e) => setText(e.target.value)}
                               value={text}
                             ></textarea>
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleSelectGender">Category</label>
                             <select
-                              class="form-control"
+                              className="form-control"
                               id="exampleSelectGender"
                               onChange={categoryIdHandel}
                               value={category}
@@ -163,7 +163,7 @@ function UpdateSubCategoryScreen() {
 
                           <button
                             type="submit"
-                            class="btn btn-primary me-2"
+                            className="btn btn-primary me-2"
                             onClick={categoryDataSubmit}
                             style={{ width: "13%" }}
                           >

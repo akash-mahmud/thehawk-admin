@@ -27,12 +27,12 @@ export default function BackupAndRestore() {
       },
     });
 
-    if (res.status ===200) {
+    if (res.status === 200) {
       setrestoreLoading(false)
       setrestoreSuccess(true)
       setTimeout(() => {
         window.location.reload()
-      } , 2000)
+      }, 2000)
     }
   };
   const [downloadLink, setdownloadLink] = useState("");
@@ -63,9 +63,9 @@ export default function BackupAndRestore() {
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="card">
-                    <div class="card-body">
-                      {/* <h4 class="card-title">All news categories</h4> */}
+                  <div className="card">
+                    <div className="card-body">
+                      {/* <h4 className="card-title">All news categories</h4> */}
                       <div className="col-sm-9 ">
                         <div
                           style={{
@@ -110,13 +110,13 @@ export default function BackupAndRestore() {
                             disabled={restoreLoading}
                           >
                             {
-                              restoreLoading? <>
+                              restoreLoading ? <>
                                 <ClipLoader loading={restoreLoading} />
                               </> : <>
-                                 Restore <RestoreIcon />
+                                Restore <RestoreIcon />
                               </>
                             }
-                         
+
                           </button>
                           {restoreinput ? (
                             <>
@@ -129,25 +129,25 @@ export default function BackupAndRestore() {
                                   type={"file"}
                                 />
                                 <button
-                                     disabled={restoreLoading}
+                                  disabled={restoreLoading}
                                   onClick={restore}
                                   type="button"
                                   className="btn mt-5 btn-dark"
                                 >
                                   {
-                              restoreLoading? <>
-                                <ClipLoader loading={restoreLoading} />
-                              </> : <>
-                              Push Database
-                              </>
-                            }
-                                 
+                                    restoreLoading ? <>
+                                      <ClipLoader loading={restoreLoading} />
+                                    </> : <>
+                                      Push Database
+                                    </>
+                                  }
+
                                 </button>
                               </div>
                             </>
                           ) : null}
-                    
-                          
+
+
 
 
                         </div>
@@ -155,10 +155,10 @@ export default function BackupAndRestore() {
                           restoreSuccess ? <>
                             <div className='mt-2'>
 
-                            <Alert  severity="success">Data restored successfully</Alert>
-                              </div>
-                            </> : null
-                          }
+                              <Alert severity="success">Data restored successfully</Alert>
+                            </div>
+                          </> : null
+                        }
                       </div>
                     </div>
                   </div>

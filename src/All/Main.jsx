@@ -30,6 +30,9 @@ import PrivateRoutes from "../PrivateRoutes";
 import AddPool from "../Screens/AddPool";
 import CurrentPool from "../Screens/CurrentPool";
 import SiteInfo from "../Screens/SiteInfo";
+import AddTag from "../Screens/AddTag";
+import AllTag from "../Screens/AllTag";
+import { url } from "../config/url";
 
 // /all/sub_category
 
@@ -112,6 +115,14 @@ const [user, setUser]= useState("")
               <Route
                 path="/admin/author_alll_posts"
                 element={<AllPostScreenForAuthor />}
+              />  <Route
+                path={url.tag.add}
+                element={<AddTag />}
+                
+              /><Route
+                path={url.tag.all}
+                element={<AllTag />}
+
               />
               {/* <Route
             path="*"

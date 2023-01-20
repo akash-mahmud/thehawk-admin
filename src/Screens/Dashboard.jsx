@@ -16,7 +16,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Dashboard() {
   const Navigate = useNavigate()
-       
+
   const dispatch = useDispatch();
   const categoryList = useSelector((state) => state.categoryList);
   const { categories } = categoryList;
@@ -30,20 +30,20 @@ function Dashboard() {
   const { posts, loading } = postList;
   useEffect(() => {
 
-      dispatch(listpost());
-    
+    dispatch(listpost());
 
-   
-      dispatch(listCategory());
-    
 
-   
-      dispatch(listSubCategory());
-   
-      dispatch(listRss());
-   
-      dispatch(allUserAction());
-    
+
+    dispatch(listCategory());
+
+
+
+    dispatch(listSubCategory());
+
+    dispatch(listRss());
+
+    dispatch(allUserAction());
+
   }, [dispatch]);
 
   const data = {
@@ -88,9 +88,9 @@ function Dashboard() {
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="card">
-                    <div class="card-body">
-                      {/* <h4 class="card-title">All news categories</h4> */}
+                  <div className="card">
+                    <div className="card-body">
+                      {/* <h4 className="card-title">All news categories</h4> */}
                       <div className="col-sm-9 myChart">
                         {loading === true ? (
                           <ClipLoader

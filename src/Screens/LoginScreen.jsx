@@ -5,6 +5,8 @@ import Swal from 'sweetalert2'
 import {  useLocation, useNavigate } from "react-router-dom";
 import { signin } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import {  toast } from 'react-toastify';
+
 function LoginScreen() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -16,9 +18,14 @@ function LoginScreen() {
   const auth = useAuth()
 
   const submit = async (e) => {
-    e.preventDefault();
-    // dispatch(signin(email, password));
-    auth.signin(email, password, () => navigate('/admin/dashboard'));
+    try {
+      e.preventDefault();
+      // dispatch(signin(email, password));
+      auth.signin(email, password, () => navigate('/admin/dashboard'));
+    } catch (error) {
+      toast.error(error.message)
+    }
+
   };
   
   

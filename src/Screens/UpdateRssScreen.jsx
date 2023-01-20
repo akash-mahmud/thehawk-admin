@@ -9,17 +9,17 @@ import { listRss } from "../actions/rssActions";
 
 function UpdateRssScreen() {
   const Navigate = useNavigate();
-         
+
   const dispatch = useDispatch();
-    const categoryList = useSelector((state) => state.categoryList);
-    const { categories } = categoryList;
-    const rssDataList = useSelector((state) => state.rssList);
-    const { rss } = rssDataList;
+  const categoryList = useSelector((state) => state.categoryList);
+  const { categories } = categoryList;
+  const rssDataList = useSelector((state) => state.rssList);
+  const { rss } = rssDataList;
   useEffect(() => {
- 
-      dispatch(listCategory());
-    
-  }, [dispatch ]);
+
+    dispatch(listCategory());
+
+  }, [dispatch]);
 
 
   const [categoryId, setCategoryId] = useState();
@@ -28,9 +28,9 @@ function UpdateRssScreen() {
   const [title, setTitle] = useState();
   useEffect(() => {
 
-      dispatch(listRss());
-    
-  }, [dispatch ]);
+    dispatch(listRss());
+
+  }, [dispatch]);
 
 
   const id = useParams();
@@ -61,7 +61,7 @@ function UpdateRssScreen() {
       setCategory("");
 
       setCategoryId("");
-dispatch(listRss());
+      dispatch(listRss());
       Navigate('/admin/all_rss');
     }
   };
@@ -89,26 +89,26 @@ dispatch(listRss());
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Add RSS</h4>
-                        <p class="card-description">All rss details</p>
-                        <form class="forms-sample">
-                          <div class="form-group">
+                  <div className="col-12 grid-margin stretch-card">
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title">Add RSS</h4>
+                        <p className="card-description">All rss details</p>
+                        <form className="forms-sample">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">Title</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="Title"
                               onChange={(e) => setTitle(e.target.value)}
                               value={title}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">Rss Url</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="Url"
                               onChange={(e) => setUrl(e.target.value)}
@@ -116,10 +116,10 @@ dispatch(listRss());
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleSelectGender">Category</label>
                             <select
-                              class="form-control"
+                              className="form-control"
                               id="exampleSelectGender"
                               onChange={categoryIdHandel}
                               value={category}
@@ -136,7 +136,7 @@ dispatch(listRss());
 
                           <button
                             type="submit"
-                            class="btn btn-primary me-2"
+                            className="btn btn-primary me-2"
                             onClick={postDataSubmit}
                             style={{ width: "13%" }}
                           >

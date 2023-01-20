@@ -34,16 +34,16 @@ function AllPostScreenForAuthor() {
   const subCategoryList = useSelector((state) => state.subCategoryList);
   const { subCategories } = subCategoryList;
 
-    useEffect(() => {
-    
-        dispatch(listpost());
-      
-     
-        dispatch(listCategory());
-      
-        dispatch(listSubCategory());
-      
-    }, [dispatch]);
+  useEffect(() => {
+
+    dispatch(listpost());
+
+
+    dispatch(listCategory());
+
+    dispatch(listSubCategory());
+
+  }, [dispatch]);
   const deleteHandel = async (postId) => {
     if (postId) {
       try {
@@ -58,23 +58,23 @@ function AllPostScreenForAuthor() {
     }
   };
   useEffect(() => {
- 
+
     const sortedData =
       posts &&
       posts
-     
-      .filter(
-        (curData) =>
-        userData &&userData._id && curData.author.id === userData._id
-      )
-      .sort((a, b) => {
-        const dateAInMillis = new Date(a.createdAt).getTime();
-        const dateBInMillis = new Date(b.createdAt).getTime();
 
-        return dateBInMillis - dateAInMillis;
-      });
+        .filter(
+          (curData) =>
+            userData && userData._id && curData.author.id === userData._id
+        )
+        .sort((a, b) => {
+          const dateAInMillis = new Date(a.createdAt).getTime();
+          const dateBInMillis = new Date(b.createdAt).getTime();
+
+          return dateBInMillis - dateAInMillis;
+        });
     setSort(sortedData);
-  }, [posts,userData]);
+  }, [posts, userData]);
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -88,17 +88,17 @@ function AllPostScreenForAuthor() {
     const filteredData =
       posts &&
       posts
-      .filter(
-        (curData) =>
-          userData._id === curData.author.id
-      )
-      .filter((curElem) => {
-        return (
-          dayjs(date).isSame(
-            dayjs(new Date(curElem.createdAt).toDateString())
-          ) === true
-        );
-      });
+        .filter(
+          (curData) =>
+            userData._id === curData.author.id
+        )
+        .filter((curElem) => {
+          return (
+            dayjs(date).isSame(
+              dayjs(new Date(curElem.createdAt).toDateString())
+            ) === true
+          );
+        });
 
 
     setSort(filteredData);
@@ -106,16 +106,16 @@ function AllPostScreenForAuthor() {
       const sortedData =
         posts &&
         posts
-        .filter(
-          (curData) =>
-            userData._id === curData.author.id
-        )
-        .sort((a, b) => {
-          const dateAInMillis = new Date(a.createdAt).getTime();
-          const dateBInMillis = new Date(b.createdAt).getTime();
+          .filter(
+            (curData) =>
+              userData._id === curData.author.id
+          )
+          .sort((a, b) => {
+            const dateAInMillis = new Date(a.createdAt).getTime();
+            const dateBInMillis = new Date(b.createdAt).getTime();
 
-          return dateBInMillis - dateAInMillis;
-        });
+            return dateBInMillis - dateAInMillis;
+          });
       setSort(sortedData);
     }
   };
@@ -125,16 +125,16 @@ function AllPostScreenForAuthor() {
       const sortedData =
         posts &&
         posts
-        .filter(
-          (curData) =>
-            userData._id === curData.author.id
-        )
-        .sort((a, b) => {
-          const dateAInMillis = new Date(a.createdAt).getTime();
-          const dateBInMillis = new Date(b.createdAt).getTime();
+          .filter(
+            (curData) =>
+              userData._id === curData.author.id
+          )
+          .sort((a, b) => {
+            const dateAInMillis = new Date(a.createdAt).getTime();
+            const dateBInMillis = new Date(b.createdAt).getTime();
 
-          return dateBInMillis - dateAInMillis;
-        });
+            return dateBInMillis - dateAInMillis;
+          });
       setSort(sortedData);
     } else {
       const filteredData =
@@ -152,16 +152,16 @@ function AllPostScreenForAuthor() {
       const sortedData =
         posts &&
         posts
-        .filter(
-          (curData) =>
-            userData._id === curData.author.id
-        )
-        .sort((a, b) => {
-          const dateAInMillis = new Date(a.createdAt).getTime();
-          const dateBInMillis = new Date(b.createdAt).getTime();
+          .filter(
+            (curData) =>
+              userData._id === curData.author.id
+          )
+          .sort((a, b) => {
+            const dateAInMillis = new Date(a.createdAt).getTime();
+            const dateBInMillis = new Date(b.createdAt).getTime();
 
-          return dateBInMillis - dateAInMillis;
-        });
+            return dateBInMillis - dateAInMillis;
+          });
       setSort(sortedData);
     } else {
       const filteredData =
@@ -185,10 +185,10 @@ function AllPostScreenForAuthor() {
                   {loading === true ? (
                     <ClipLoader color="000" loading="true" size={54} />
                   ) : (
-                    <div class="col-md-12 grid-margin stretch-card">
-                      <div class="card">
-                        <div class="card-body">
-                          <h4 class="card-title text-center">
+                    <div className="col-md-12 grid-margin stretch-card">
+                      <div className="card">
+                        <div className="card-body">
+                          <h4 className="card-title text-center">
                             All post collection
                           </h4>
 
@@ -271,7 +271,7 @@ function AllPostScreenForAuthor() {
                               </select>
                             </div>
                           </div>
-                          <div class="">
+                          <div className="">
                             <table>
                               <thead>
                                 <tr>

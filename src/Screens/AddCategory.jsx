@@ -12,8 +12,8 @@ function AddCategory() {
   const [text, setText] = useState('');
   const [pageTitle, setPageTitle] = useState('');
   const [pageKeywords, setPageKeywords] = useState('');
-    // position: req.body.position,
-  
+  // position: req.body.position,
+
   const [addTop, setaddTop] = useState(false);
   const [position, setposition] = useState();
   const [adPostLoad, setadPostLoad] = useState(false);
@@ -32,7 +32,7 @@ function AddCategory() {
     const res = await axios.post('/api/category', {
       title,
       text,
-position,
+      position,
       addTop,
       addToMenu,
       blueSection,
@@ -45,7 +45,7 @@ position,
       pageKeywords,
     });
     if (res.data === 'success') {
-        setadPostLoad(false);
+      setadPostLoad(false);
       setTitle('');
       setText('');
       setposition();
@@ -73,18 +73,18 @@ position,
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Update the category</h4>
-                        <p class="card-description">All catrgory details</p>
-                        <form class="forms-sample">
-                          <div class="form-group">
+                  <div className="col-12 grid-margin stretch-card">
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title">Update the category</h4>
+                        <p className="card-description">All catrgory details</p>
+                        <form className="forms-sample">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Category
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="Title"
                               onChange={(e) => setTitle(e.target.value)}
@@ -92,48 +92,48 @@ position,
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Page title
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="enter page title"
                               onChange={(e) => setPageTitle(e.target.value)}
                               value={pageTitle}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Position on Menu
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="number"
                               placeholder="enter page title"
                               onChange={(e) => setposition(parseInt(e.target.value))}
                               value={position}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Page keywords
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="use comma to type multiple keywords"
                               onChange={(e) => setPageKeywords(e.target.value)}
                               value={pageKeywords}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlTextarea1">
                               Page description
                             </label>
                             <textarea
-                              class="form-control"
+                              className="form-control"
                               id="exampleFormControlTextarea1"
                               rows="3"
                               onChange={(e) => setText(e.target.value)}
@@ -141,7 +141,7 @@ position,
                             ></textarea>
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isfetaured">Add to menu</label>
                             <input
                               style={{
@@ -156,7 +156,7 @@ position,
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to GridSection
                             </label>
@@ -175,7 +175,7 @@ position,
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to add To Common Section
                             </label>
@@ -193,7 +193,7 @@ position,
                               checked={addToComminSection}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to Plain Section
                             </label>
@@ -212,7 +212,7 @@ position,
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to video Section
                             </label>
@@ -230,7 +230,7 @@ position,
                               checked={isVideoSection}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to grid with wizard
                             </label>
@@ -249,7 +249,7 @@ position,
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isRight">
                               Is blusection Category?
                             </label>
@@ -267,7 +267,7 @@ position,
                           </div>
                           <button
                             type="submit"
-                            class="btn btn-primary me-2"
+                            className="btn btn-primary me-2"
                             onClick={categoryDataSubmit}
                             style={{ width: "13%" }}
                             disabled={adPostLoad}

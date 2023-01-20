@@ -16,13 +16,13 @@ import { listCategory } from "../actions/categoryActions";
 import { listSubCategory } from "../actions/subCategoryAction";
 
 function AllPost() {
-    let [hasMore, sethasMore] = useState(true);
-    const [pageNumber, setpageNumber] = useState(2);
+  let [hasMore, sethasMore] = useState(true);
+  const [pageNumber, setpageNumber] = useState(2);
   const [sort, setSort] = useState([]);
   const [postLoading, setpostLoading] = useState(false)
   // const navigate = useNavigate();
-    const navigate = useNavigate();
-    const [allLoadedPost, setallLoadedPost] = useState([])
+  const navigate = useNavigate();
+  const [allLoadedPost, setallLoadedPost] = useState([])
 
   const adminPostData = async () => {
     setpostLoading(true)
@@ -33,30 +33,30 @@ function AllPost() {
       setallLoadedPost(data);
       setpostLoading(false)
     } catch (error) {
-      
+
     }
 
-   }
-useEffect(() => {
-  adminPostData();
+  }
+  useEffect(() => {
+    adminPostData();
 
-}, [])
+  }, [])
 
   const dispatch = useDispatch();
 
-      const categoryList = useSelector((state) => state.categoryList);
-      const { categories } = categoryList;
-      const subCategoryList = useSelector((state) => state.subCategoryList);
-      const { subCategories } = subCategoryList;
-   useEffect(() => {
-   
-     
-    
-       dispatch(listCategory());
-     
-       dispatch(listSubCategory());
-     
-   }, [dispatch]);
+  const categoryList = useSelector((state) => state.categoryList);
+  const { categories } = categoryList;
+  const subCategoryList = useSelector((state) => state.subCategoryList);
+  const { subCategories } = subCategoryList;
+  useEffect(() => {
+
+
+
+    dispatch(listCategory());
+
+    dispatch(listSubCategory());
+
+  }, [dispatch]);
 
 
   const deleteHandel = async (postId) => {
@@ -66,7 +66,7 @@ useEffect(() => {
         const res = await axios.delete(`/api/post/${postId}`);
         if (res) {
           dispatch(listpost());
-        
+
         }
       } catch (error) {
       }
@@ -74,20 +74,20 @@ useEffect(() => {
   };
 
 
-const [catPage, setcatPage] = useState(2)
-const [SubcatPage, setSubcatPage] = useState(2);
-const [catId, setcatId] = useState()
-const [subcatId, setsubcatId] = useState()
+  const [catPage, setcatPage] = useState(2)
+  const [SubcatPage, setSubcatPage] = useState(2);
+  const [catId, setcatId] = useState()
+  const [subcatId, setsubcatId] = useState()
   const dateFilter = (date) => {
-    
+
 
     const filteredData =
       sort &&
       sort.filter((curElem) => {
         return (
-         
-           new Date(curElem.createdAt).toISOString() === new Date(date).toISOString()
-          
+
+          new Date(curElem.createdAt).toISOString() === new Date(date).toISOString()
+
         );
       });
 
@@ -112,94 +112,94 @@ const [subcatId, setsubcatId] = useState()
     }
     setcatPage(2);
     sethasMore(() => true);
-  setcatId(category);
+    setcatId(category);
     if (category === "All") {
 
-     
+
       setSort(allLoadedPost);
     } else {
-      const {data} = await axios.get(`/api/category/${category}/?page=1`);
- if (data.length < 20) {
-   sethasMore(() => false);
- }
-      
+      const { data } = await axios.get(`/api/category/${category}/?page=1`);
+      if (data.length < 20) {
+        sethasMore(() => false);
+      }
+
       setSort(data);
     }
   };
 
-  const subCategoryHandel = async(subCategory) => {
+  const subCategoryHandel = async (subCategory) => {
     console.log(subCategory);
-      setSubcatPage(2);
-      sethasMore(() => true);
-      setsubcatId(subCategory)
+    setSubcatPage(2);
+    sethasMore(() => true);
+    setsubcatId(subCategory)
     if (subCategory === "All") {
 
-    
+
       setSort(allLoadedPost);
     } else {
-     const { data } = await axios.get(
-       `/api/subCategory/${subCategory}/?page=1`
-     );
+      const { data } = await axios.get(
+        `/api/subCategory/${subCategory}/?page=1`
+      );
 
-      if (data.length <5 ) {
-  sethasMore(() => false);
+      if (data.length < 5) {
+        sethasMore(() => false);
       }
       setSort(data);
 
-     
+
     }
   };
 
-    const loadNextPost = async () => {
+  const loadNextPost = async () => {
 
 
-   
-        const data = await axios.get(`/api/post/${'admin'}/?page=${pageNumber}`);
-        if (data.status === 200) {
-          if (data.data.length < 20) {
-            sethasMore(() => false);
-          }
-  
-          setpageNumber(pageNumber + 1);
-  
-          setSort([...sort, ...data.data]);
-        }
-      
 
-    };
+    const data = await axios.get(`/api/post/${'admin'}/?page=${pageNumber}`);
+    if (data.status === 200) {
+      if (data.data.length < 20) {
+        sethasMore(() => false);
+      }
 
-    const loadNextCAtFilterPost = async() => {
+      setpageNumber(pageNumber + 1);
 
-         const {data ,status} = await axios.get(
-           `/api/category/${catId}/?page=${catPage}`
-         );
-        if (status === 200) {
-          console.log(data.length);
-          if (data.length < 20) {
-            sethasMore(() => false);
-          }
-  
-          setcatPage(catPage + 1);
-  console.log(catPage);
-          setSort([...sort, ...data]);
-        }
+      setSort([...sort, ...data.data]);
     }
-        const loadNextsubCAtFilterPost = async() => {
 
-         const { data, status } = await axios.get(
-           `/api/subCategory/${subcatId}/?page=${SubcatPage}`
-         );
-        if (status === 200) {
-          console.log(data.length);
-          if (data.length < 5) {
-            sethasMore(() => false);
-          }
-  
-          setSubcatPage(SubcatPage + 1);
 
-          setSort([...sort, ...data]);
-        }
+  };
+
+  const loadNextCAtFilterPost = async () => {
+
+    const { data, status } = await axios.get(
+      `/api/category/${catId}/?page=${catPage}`
+    );
+    if (status === 200) {
+      console.log(data.length);
+      if (data.length < 20) {
+        sethasMore(() => false);
+      }
+
+      setcatPage(catPage + 1);
+      console.log(catPage);
+      setSort([...sort, ...data]);
     }
+  }
+  const loadNextsubCAtFilterPost = async () => {
+
+    const { data, status } = await axios.get(
+      `/api/subCategory/${subcatId}/?page=${SubcatPage}`
+    );
+    if (status === 200) {
+      console.log(data.length);
+      if (data.length < 5) {
+        sethasMore(() => false);
+      }
+
+      setSubcatPage(SubcatPage + 1);
+
+      setSort([...sort, ...data]);
+    }
+  }
 
   return (
     <>
@@ -211,10 +211,10 @@ const [subcatId, setsubcatId] = useState()
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title text-center">
+                  <div className="col-md-12 grid-margin stretch-card">
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title text-center">
                           All post collection
                         </h4>
                         <div className="allFilters">
@@ -250,7 +250,7 @@ const [subcatId, setsubcatId] = useState()
                             <select
                               onChange={(e) => {
                                 categoryHandler(e.target.value)
-                       
+
                               }}
                               className="form-control"
                               name=""
@@ -297,7 +297,7 @@ const [subcatId, setsubcatId] = useState()
                             </select>
                           </div>
                         </div>
-                        <div class="">
+                        <div className="">
                           <table>
                             <thead>
                               <tr>
@@ -385,7 +385,7 @@ const [subcatId, setsubcatId] = useState()
                                 ))}
 
                               {postLoading ? <>
-                              
+
                               </> : null}
                             </tbody>
                           </table>
@@ -394,7 +394,7 @@ const [subcatId, setsubcatId] = useState()
                           <>
                             <InfiniteScroll
                               dataLength={sort.length} //This is important field to render the next data
-                              next={()=> {
+                              next={() => {
 
                                 // catId
                                 //   ? loadNextCAtFilterPost
@@ -403,25 +403,25 @@ const [subcatId, setsubcatId] = useState()
                                 //   // : catId === 'All' || subcatId === 'All'
                                 //   // ? loadNextPost
                                 //   : loadNextPost
-   if (catId === 'All' ) {
-    loadNextPost();
-   }else if( subcatId === 'All'){
- loadNextPost();
-   }
-   else
-                                if (catId && catId !== 'All' && !subcatId) {
-                                  loadNextCAtFilterPost();
+                                if (catId === 'All') {
+                                  loadNextPost();
+                                } else if (subcatId === 'All') {
+                                  loadNextPost();
+                                }
+                                else
+                                  if (catId && catId !== 'All' && !subcatId) {
+                                    loadNextCAtFilterPost();
+                                  }
+
+                                if (subcatId && subcatId !== 'All') {
+                                  loadNextsubCAtFilterPost();
                                 }
 
-  if (subcatId && subcatId !== 'All') {
-    loadNextsubCAtFilterPost();
-  }
-  
-   
-    if (!subcatId && !catId ) {
-    loadNextPost();
-    }
-    
+
+                                if (!subcatId && !catId) {
+                                  loadNextPost();
+                                }
+
 
 
                               }

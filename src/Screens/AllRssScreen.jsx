@@ -14,8 +14,8 @@ function AllRssScreen() {
   const { rss, loading } = rssList;
   useEffect(() => {
 
-      dispatch(listRss());
-   
+    dispatch(listRss());
+
   }, [dispatch]);
 
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ function AllRssScreen() {
       try {
         const res = await axios.delete(`/api/rss/${postId}`);
         if (res) {
-           dispatch(listRss());
+          dispatch(listRss());
           navigate('/admin/all_rss');
         }
       } catch (error) {
@@ -48,12 +48,12 @@ function AllRssScreen() {
                   {loading === true ? (
                     <ClipLoader color="000" loading="true" size={54} />
                   ) : (
-                    <div class="col-md-12 grid-margin stretch-card">
-                      <div class="card">
-                        <div class="card-body">
-                          <h4 class="card-title">All Rss</h4>
+                    <div className="col-md-12 grid-margin stretch-card">
+                      <div className="card">
+                        <div className="card-body">
+                          <h4 className="card-title">All Rss</h4>
 
-                          <div class="">
+                          <div className="">
                             <table>
                               <thead>
                                 <tr>

@@ -18,8 +18,8 @@ import { listSubCategory } from '../actions/subCategoryAction';
 import Button from '@mui/material/Button';
 
 import Slide from '@mui/material/Slide';
-const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
-const isSameOrBefore = require('dayjs/plugin/isSameOrBefore');
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
@@ -29,7 +29,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 function AllUsersScreen() {
   const navigate = useNavigate();
-       
+
   const userList = useSelector((state) => state.allUsers);
   const { loading, users } = userList;
   const postList = useSelector((state) => state.postList);
@@ -47,12 +47,12 @@ function AllUsersScreen() {
 
   useEffect(() => {
 
-      dispatch(allUserAction());
-    
-   
-      dispatch(listpost());
-    
-  }, [dispatch ]);
+    dispatch(allUserAction());
+
+
+    dispatch(listpost());
+
+  }, [dispatch]);
 
   const [startingDate, setStartingDate] = useState();
   const [endingDate, setEndingDate] = useState();
@@ -65,7 +65,7 @@ function AllUsersScreen() {
           dispatch(allUserAction());
           navigate('/admin/all_users');
         }
-      } catch (error) {}
+      } catch (error) { }
     }
   };
 
@@ -102,7 +102,7 @@ function AllUsersScreen() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const dateFilter = (date) => {
-   
+
 
     const filteredData =
       posts &&
@@ -201,10 +201,10 @@ function AllUsersScreen() {
                                       size={54}
                                     />
                                   ) : (
-                                    <div class="col-md-12 grid-margin ">
-                                      <div class="card">
-                                        <div class="card-body">
-                                          {/* <h4 class="card-title text-center">
+                                    <div className="col-md-12 grid-margin ">
+                                      <div className="card">
+                                        <div className="card-body">
+                                          {/* <h4 className="card-title text-center">
                                             his post collection
                                           </h4> */}
 
@@ -277,7 +277,7 @@ function AllUsersScreen() {
                                               </h3>
                                             </div>
                                           </div>
-                                          <div class="">
+                                          <div className="">
                                             <table>
                                               <thead>
                                                 <tr>
@@ -320,13 +320,13 @@ function AllUsersScreen() {
 
                                                         <td>
                                                           {post.isFetaured ===
-                                                          true
+                                                            true
                                                             ? 'Yes'
                                                             : 'No'}
                                                         </td>
                                                         <td>
                                                           {post.isFetauredTop ===
-                                                          true
+                                                            true
                                                             ? 'Yes'
                                                             : 'No'}
                                                         </td>
@@ -353,22 +353,22 @@ function AllUsersScreen() {
                                               ).length
                                             }
                                             paginate={paginate}
-                                            // totalPosts=  {(currentPosts &&
-                                            //       currentPosts
-                                            //       .filter((curData)=> curData.author.id===userId)).length> 0 &&(
-                                            //         (currentPosts &&
-                                            //       currentPosts
-                                            //       .filter((curData)=> curData.author.id===userId)).length
-                                            //       ) }
+                                          // totalPosts=  {(currentPosts &&
+                                          //       currentPosts
+                                          //       .filter((curData)=> curData.author.id===userId)).length> 0 &&(
+                                          //         (currentPosts &&
+                                          //       currentPosts
+                                          //       .filter((curData)=> curData.author.id===userId)).length
+                                          //       ) }
 
-                                            //                 totalPosts={(currentPosts && currentPosts.filter((curData)=> curData.author.id===userId).length>0?(
-                                            //
-                                            //                     (currentPosts&& currentPosts.filter((data)=>data.author.id===userId).length)
-                                            //
-                                            //                 ):(
-                                            //
-                                            //                   (currentPosts&& currentPosts.filter((data)=>data.author.id===userId).length)
-                                            //                 ))}
+                                          //                 totalPosts={(currentPosts && currentPosts.filter((curData)=> curData.author.id===userId).length>0?(
+                                          //
+                                          //                     (currentPosts&& currentPosts.filter((data)=>data.author.id===userId).length)
+                                          //
+                                          //                 ):(
+                                          //
+                                          //                   (currentPosts&& currentPosts.filter((data)=>data.author.id===userId).length)
+                                          //                 ))}
                                           />
                                         </div>
                                       </div>
@@ -384,12 +384,12 @@ function AllUsersScreen() {
                         </div>
                       </Dialog>
 
-                      <div class="col-md-12 grid-margin stretch-card">
-                        <div class="card">
-                          <div class="card-body">
-                            <h4 class="card-title">All users of thehawk</h4>
+                      <div className="col-md-12 grid-margin stretch-card">
+                        <div className="card">
+                          <div className="card-body">
+                            <h4 className="card-title">All users of thehawk</h4>
 
-                            <div class="">
+                            <div className="">
                               <table>
                                 <thead>
                                   <tr>
@@ -446,10 +446,10 @@ function AllUsersScreen() {
                                               </div>
                                             )}
                                           {posts &&
-                                          posts.filter(
-                                            (element) =>
-                                              element.author.id === post._id
-                                          ).length <= 0 ? (
+                                            posts.filter(
+                                              (element) =>
+                                                element.author.id === post._id
+                                            ).length <= 0 ? (
                                             <div>{'Not made any post yet'}</div>
                                           ) : (
                                             ''
@@ -468,11 +468,10 @@ function AllUsersScreen() {
 
                                         <td>
                                           <button
-                                            className={`btn btn-danger mb-2 ${
-                                              post.isAdmin === true
-                                                ? 'cstm'
-                                                : ''
-                                            }`}
+                                            className={`btn btn-danger mb-2 ${post.isAdmin === true
+                                              ? 'cstm'
+                                              : ''
+                                              }`}
                                             style={{
                                               padding: ' 0.875rem 1rem',
                                             }}

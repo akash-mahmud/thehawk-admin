@@ -14,6 +14,7 @@ import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import LoupeIcon from '@mui/icons-material/Loupe';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import { useAuth } from "../hooks/user-auth";
+import { url } from "../config/url";
 function HomeIcon(props) {
   return (
     <SvgIcon {...props}>
@@ -148,6 +149,23 @@ const auth = useAuth()
                   </span>
                 </Link>
               </li>
+                <li className="nav-item">
+                <Link className="nav-link" to={url.tag.all}>
+                  <i className="mdi mdi-grid-large menu-icon"></i>
+                  <span className="menu-title">
+                    All tags <Group style={{ "margin-left": "10px" }} />
+                  </span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={url.tag.add}>
+                  <i className="mdi mdi-grid-large menu-icon"></i>
+                  <span className="menu-title">
+                    Add tags <Group style={{ "margin-left": "10px" }} />
+                  </span>
+                </Link>
+              </li>
+              
               <li className="nav-item">
                 <Link className="nav-link" to="/admin/current_pool">
                   <i className="mdi mdi-grid-large menu-icon"></i>

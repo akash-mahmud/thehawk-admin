@@ -14,19 +14,19 @@ function AllCategoryScreen() {
   const categoryList = useSelector((state) => state.categoryList);
   const { loading, categories } = categoryList;
   const postList = useSelector((state) => state.postList);
-  const {  posts } = postList;
+  const { posts } = postList;
   const navigate = useNavigate();
-   
+
   const dispatch = useDispatch();
   useEffect(() => {
 
-      dispatch(listCategory());
-    
+    dispatch(listCategory());
 
 
-      dispatch(listpost());
-    
-  }, [dispatch ]);
+
+    dispatch(listpost());
+
+  }, [dispatch]);
 
   const deleteHandel = async (postId) => {
     if (postId) {
@@ -53,12 +53,12 @@ function AllCategoryScreen() {
                   {loading === true ? (
                     <ClipLoader color="000" loading="true" size={54} />
                   ) : (
-                    <div class="col-md-12 grid-margin stretch-card">
-                      <div class="card">
-                        <div class="card-body">
-                          <h4 class="card-title">All news categories</h4>
+                    <div className="col-md-12 grid-margin stretch-card">
+                      <div className="card">
+                        <div className="card-body">
+                          <h4 className="card-title">All news categories</h4>
 
-                          <div class="">
+                          <div className="">
                             <table>
                               <thead>
                                 <tr>

@@ -8,15 +8,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listCategory } from '../actions/categoryActions';
 function UpdateCategoryScreen() {
   const navigate = useNavigate();
-       
+
   const categoryList = useSelector((state) => state.categoryList);
   const { categories } = categoryList;
   const dispatch = useDispatch();
   useEffect(() => {
 
-      dispatch(listCategory());
-    
-  }, [dispatch ]);
+    dispatch(listCategory());
+
+  }, [dispatch]);
 
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
@@ -94,18 +94,18 @@ function UpdateCategoryScreen() {
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Update the category</h4>
-                        <p class="card-description">All catrgory details</p>
-                        <form class="forms-sample">
-                          <div class="form-group">
+                  <div className="col-12 grid-margin stretch-card">
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title">Update the category</h4>
+                        <p className="card-description">All catrgory details</p>
+                        <form className="forms-sample">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Category
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="Title"
                               onChange={(e) => setTitle(e.target.value)}
@@ -113,24 +113,24 @@ function UpdateCategoryScreen() {
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Page title
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="enter page title"
                               onChange={(e) => setPageTitle(e.target.value)}
                               value={pageTitle}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Position on Menu
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="number"
                               placeholder="enter page title"
                               onChange={(e) =>
@@ -139,24 +139,24 @@ function UpdateCategoryScreen() {
                               value={position}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Page keywords
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="use comma to type multiple keywords"
                               onChange={(e) => setPageKeywords(e.target.value)}
                               value={pageKeywords}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlTextarea1">
                               Page description
                             </label>
                             <textarea
-                              class="form-control"
+                              className="form-control"
                               id="exampleFormControlTextarea1"
                               rows="3"
                               onChange={(e) => setText(e.target.value)}
@@ -164,7 +164,7 @@ function UpdateCategoryScreen() {
                             ></textarea>
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isfetaured">Add to menu</label>
                             <input
                               style={{
@@ -179,7 +179,7 @@ function UpdateCategoryScreen() {
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to GridSection
                             </label>
@@ -198,7 +198,7 @@ function UpdateCategoryScreen() {
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to add To Common Section
                             </label>
@@ -216,7 +216,7 @@ function UpdateCategoryScreen() {
                               checked={addToComminSection}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to Plain Section
                             </label>
@@ -235,7 +235,7 @@ function UpdateCategoryScreen() {
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to video Section
                             </label>
@@ -253,7 +253,7 @@ function UpdateCategoryScreen() {
                               checked={isVideoSection}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">
                               Add to grid with wizard
                             </label>
@@ -272,7 +272,7 @@ function UpdateCategoryScreen() {
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isRight">
                               Is blusection Category?
                             </label>
@@ -290,7 +290,7 @@ function UpdateCategoryScreen() {
                           </div>
                           <button
                             type="submit"
-                            class="btn btn-primary me-2"
+                            className="btn btn-primary me-2"
                             onClick={categoryDataSubmit}
                             style={{ width: "13%" }}
                           >

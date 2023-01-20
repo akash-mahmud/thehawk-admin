@@ -9,7 +9,7 @@ const CurrentPool = () => {
     try {
       const { data } = await axios.get("/api/pool");
       setpool(data);
-    } catch (error) {}
+    } catch (error) { }
   };
   useEffect(() => {
     loadData();
@@ -25,10 +25,10 @@ const CurrentPool = () => {
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">{pool?.title}</h4>
+                  <div className="col-12 grid-margin stretch-card">
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title">{pool?.title}</h4>
                         Options:
                         <div>
                           {pool?.question?.map((option) => (

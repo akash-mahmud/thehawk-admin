@@ -12,21 +12,21 @@ import { listSubCategory } from "../actions/subCategoryAction";
 
 function AllSubCategoryScreen() {
   const navigate = useNavigate();
-        
+
   // const [data, setData] = useState()
   const categoryList = useSelector((state) => state.categoryList);
-  const {  categories } = categoryList;
+  const { categories } = categoryList;
   // const postList = useSelector((state) => state.postList);
   // const {  posts } = postList;
 
   const dispatch = useDispatch();
-    const subCategoryList = useSelector((state) => state.subCategoryList);
-  const {loading, subCategories } = subCategoryList;
+  const subCategoryList = useSelector((state) => state.subCategoryList);
+  const { loading, subCategories } = subCategoryList;
   useEffect(() => {
 
-      dispatch(listSubCategory());
-  
-  }, [dispatch ]);
+    dispatch(listSubCategory());
+
+  }, [dispatch]);
 
   const deleteHandel = async (postId) => {
     if (postId) {
@@ -53,12 +53,12 @@ function AllSubCategoryScreen() {
                   {loading === true ? (
                     <ClipLoader color="000" loading="true" size={54} />
                   ) : (
-                    <div class="col-md-12 grid-margin stretch-card">
-                      <div class="card">
-                        <div class="card-body">
-                          <h4 class="card-title">All news Sub Categories</h4>
+                    <div className="col-md-12 grid-margin stretch-card">
+                      <div className="card">
+                        <div className="card-body">
+                          <h4 className="card-title">All news Sub Categories</h4>
 
-                          <div class="">
+                          <div className="">
                             <table>
                               <thead>
                                 <tr>

@@ -31,38 +31,38 @@ const AddPool = () => {
     setloading(true);
 
     try {
-          const formatData = {
-            title: pool.title,
-            question: [
-              {
-                id: pool.option1.id,
-                text: pool.option1.text,
-              },
-              {
-                id: pool.option2.id,
-                text: pool.option2.text,
-              },
-              {
-                id: pool.option3.id,
-                text: pool.option3.text,
-              },
-              {
-                id: pool.option4.id,
-                text: pool.option4.text,
-              },
-            ],
+      const formatData = {
+        title: pool.title,
+        question: [
+          {
+            id: pool.option1.id,
+            text: pool.option1.text,
+          },
+          {
+            id: pool.option2.id,
+            text: pool.option2.text,
+          },
+          {
+            id: pool.option3.id,
+            text: pool.option3.text,
+          },
+          {
+            id: pool.option4.id,
+            text: pool.option4.text,
+          },
+        ],
       };
-  
+
       await axios.post('/api/pool', formatData)
-          setloading(false);
+      setloading(false);
       navigate('/admin/dashboard');
     } catch (error) {
-      
+
     }
   }
   return (
     <>
-   
+
       <Header />
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
@@ -71,15 +71,15 @@ const AddPool = () => {
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Add Pool</h4>
-                        <form class="forms-sample">
-                          <div class="form-group">
+                  <div className="col-12 grid-margin stretch-card">
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title">Add Pool</h4>
+                        <form className="forms-sample">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">Title</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               onChange={(e) =>
                                 setpool({
@@ -90,12 +90,12 @@ const AddPool = () => {
                               value={pool.title}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Option 1
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               onChange={(e) =>
                                 setpool({
@@ -109,12 +109,12 @@ const AddPool = () => {
                               value={pool.option1.text}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Option 2
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               onChange={(e) =>
                                 setpool({
@@ -128,12 +128,12 @@ const AddPool = () => {
                               value={pool.option2.text}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Option 3
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               onChange={(e) =>
                                 setpool({
@@ -147,12 +147,12 @@ const AddPool = () => {
                               value={pool.option3.text}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Option 4
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               onChange={(e) =>
                                 setpool({
@@ -168,7 +168,7 @@ const AddPool = () => {
                           </div>
                           <button
                             type="submit"
-                            class="btn btn-primary me-2"
+                            className="btn btn-primary me-2"
                             onClick={submit}
                             style={{ width: "13%" }}
                             disabled={loading}

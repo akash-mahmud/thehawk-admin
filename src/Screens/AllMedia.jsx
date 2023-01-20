@@ -7,15 +7,15 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";
 
 function AllMedia() {
-      const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
-    const postList = useSelector((state) => state.postList);
-    const { loading, posts } = postList;
+  const postList = useSelector((state) => state.postList);
+  const { loading, posts } = postList;
   useEffect(() => {
 
-      dispatch(listpost());
-    
+    dispatch(listpost());
+
   }, [dispatch]);
 
 
@@ -28,12 +28,12 @@ function AllMedia() {
           <div className="main-panel">
             <div className="content-wrapper">
               <div className="row">
-                <div class="col-md-12 grid-margin stretch-card">
+                <div className="col-md-12 grid-margin stretch-card">
                   {loading === true ? (
                     <ClipLoader color="skyblue" loading="true" size={54} />
                   ) : (
-                    <div class="card">
-                      <div class="card-body">
+                    <div className="card">
+                      <div className="card-body">
                         {posts &&
                           posts.map((curElem) => (
                             <>

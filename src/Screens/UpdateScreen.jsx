@@ -304,40 +304,40 @@ function UpdateScreen() {
               <div className="content-wrapper">
                 <div className="row">
                   <div className="col-sm-12">
-                    <div class="col-12 grid-margin stretch-card">
-                      <div class="card">
-                        <div class="card-body">
-                          <h4 class="card-title">Add post</h4>
-                          <p class="card-description">All post details</p>
-                          <form class="forms-sample">
-                            <div class="form-group">
+                    <div className="col-12 grid-margin stretch-card">
+                      <div className="card">
+                        <div className="card-body">
+                          <h4 className="card-title">Add post</h4>
+                          <p className="card-description">All post details</p>
+                          <form className="forms-sample">
+                            <div className="form-group">
                               <label for="exampleFormControlFile1">
                                 Post Title
                               </label>
                               <input
-                                class="form-control"
+                                className="form-control"
                                 type="text"
                                 placeholder="Title"
                                 onChange={(e) => setTitle(e.target.value)}
                                 value={title}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label>Sub Heading</label>
                               <input
-                                class="form-control"
+                                className="form-control"
                                 type="text"
                                 placeholder="Sub Heading"
                                 onChange={(e) => setSubHeading(e.target.value)}
                                 value={subHeading}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label for="exampleFormControlTextarea1">
                                 Post text
                               </label>
                               <textarea
-                                class="form-control"
+                                className="form-control"
                                 id="exampleFormControlTextarea1"
                                 rows="3"
                                 onChange={(e) => setText(e.target.value)}
@@ -386,10 +386,10 @@ function UpdateScreen() {
                             </Button>
                             or Add video url
                             <br />
-                            <div class="form-group">
+                            <div className="form-group">
                               <label>Video embeded url</label>
                               <input
-                                class="form-control"
+                                className="form-control"
                                 type="text"
                                 placeholder="iframe/ youtube video embed link"
                                 onChange={(e) => setVideo(e.target.value)}
@@ -403,13 +403,13 @@ function UpdateScreen() {
                               *warning: this data will just working for video
                               section's posts
                             </span>
-                            <div class="form-group mt-3">
+                            <div className="form-group mt-3">
                               <label for="exampleFormControlFile1">
                                 Image Alt (if you upload a new image then add
                                 this.)
                               </label>
                               <input
-                                class="form-control"
+                                className="form-control"
                                 type="text"
                                 placeholder="img alt"
                                 onChange={(e) => setImgAlt(e.target.value)}
@@ -432,16 +432,16 @@ function UpdateScreen() {
                               >
                                 <DialogTitle>
                                   <h3>Medias</h3>
-                                  <div class="form-group">
+                                  <div className="form-group">
                                     <label>Search</label>
                                     <input
-                                      class="form-control"
+                                      className="form-control"
                                       type="text"
                                       placeholder="Enter Image Alt value to serach a specific image"
                                       onChange={(e) =>
                                         setsearchMediaUrl(e.target.value)
                                       }
-                                      // value={video}
+                                    // value={video}
                                     />
 
                                     <button
@@ -449,7 +449,7 @@ function UpdateScreen() {
                                       className="btn btn-primary me-2"
                                       onClick={mediaSearch}
                                       style={{ marginTop: "10px" }}
-                                      // disabled={adPostLoad}
+                                    // disabled={adPostLoad}
                                     >
                                       Search
                                     </button>
@@ -530,12 +530,12 @@ function UpdateScreen() {
                               </DialogContent>
                             </Dialog>
                             <div
-                              class="form-group"
+                              className="form-group"
                               style={{ marginTop: "20px" }}
                             >
                               <label for="exampleSelectGender">Category</label>
                               <select
-                                class="form-control"
+                                className="form-control"
                                 id="exampleSelectGender"
                                 onChange={categoryIdHandel}
                                 value={category}
@@ -550,14 +550,14 @@ function UpdateScreen() {
                               </select>
                             </div>
                             <div
-                              class="form-group"
+                              className="form-group"
                               style={{ marginTop: "20px" }}
                             >
                               <label for="exampleSelectGender">
                                 If you want to change the user
                               </label>
                               <select
-                                class="form-control"
+                                className="form-control"
                                 id="exampleSelectGender"
                                 onChange={userHandel}
                                 value={name}
@@ -568,12 +568,12 @@ function UpdateScreen() {
                                   ))}
                               </select>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label for="exampleSelectGender">
                                 Sub Category
                               </label>
                               <select
-                                class="form-control"
+                                className="form-control"
                                 id="exampleSelectGender"
                                 onChange={subCategoryIdHandel}
                                 disabled={disable}
@@ -595,7 +595,7 @@ function UpdateScreen() {
                                     ))}
                               </select>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label htmlFor="isfetaured">
                                 Add as category fetaured post
                               </label>
@@ -613,7 +613,7 @@ function UpdateScreen() {
                                 checked={isFetaured}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label htmlFor="isTopfetaured">Add to top</label>
                               <input
                                 style={{
@@ -629,7 +629,7 @@ function UpdateScreen() {
                                 checked={isFetauredTop}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label htmlFor="isRight">
                                 Add to Right Column
                               </label>
@@ -645,7 +645,7 @@ function UpdateScreen() {
                                 checked={isRight}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label htmlFor="isRight">Tending?</label>
                               <input
                                 style={{
@@ -659,7 +659,7 @@ function UpdateScreen() {
                                 checked={trend}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label htmlFor="isRight"> DON'T MISS?</label>
                               <input
                                 style={{
@@ -673,7 +673,7 @@ function UpdateScreen() {
                                 checked={popular}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label htmlFor="isRight"> is Breaking</label>
                               <input
                                 style={{
@@ -689,7 +689,7 @@ function UpdateScreen() {
                                 checked={isBreaking}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label htmlFor="isRight">
                                 Social Share Button?
                               </label>
@@ -706,10 +706,10 @@ function UpdateScreen() {
                                 checked={socialShare}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label>Tags</label>
                               <input
-                                class="form-control"
+                                className="form-control"
                                 type="text"
                                 placeholder="use comma for write new tags or multiple tags"
                                 onChange={(e) => setpageTags(e.target.value)}
@@ -717,20 +717,20 @@ function UpdateScreen() {
                               />
                             </div>
                             <h5>SEO options</h5>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label>Page title</label>
                               <input
-                                class="form-control"
+                                className="form-control"
                                 type="text"
                                 placeholder="Write the page title"
                                 onChange={(e) => setpageTitle(e.target.value)}
                                 value={pageTitle}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label>Page Description</label>
                               <input
-                                class="form-control"
+                                className="form-control"
                                 type="text"
                                 placeholder="Write the page description"
                                 onChange={(e) =>
@@ -739,10 +739,10 @@ function UpdateScreen() {
                                 value={pageDescription}
                               />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                               <label>Keywords</label>
                               <input
-                                class="form-control"
+                                className="form-control"
                                 type="text"
                                 placeholder="use comma for write new Keywords or multiple Keywords"
                                 onChange={(e) =>
@@ -753,7 +753,7 @@ function UpdateScreen() {
                             </div>
                             <button
                               type="submit"
-                              class="btn btn-primary me-2"
+                              className="btn btn-primary me-2"
                               onClick={postDataSubmit}
                               style={{ width: "13%" }}
                             >

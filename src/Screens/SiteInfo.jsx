@@ -17,7 +17,7 @@ const SiteInfo = () => {
       } else {
         setsiteinfo(data);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const SiteInfo = () => {
       setloading(false);
 
       navigate("/admin/dashboard");
-    } catch (error) {}
+    } catch (error) { }
   };
   return (
     <>
@@ -50,15 +50,15 @@ const SiteInfo = () => {
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Site info</h4>
-                        <form class="forms-sample">
-                          <div class="form-group">
+                  <div className="col-12 grid-margin stretch-card">
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title">Site info</h4>
+                        <form className="forms-sample">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">Title</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               onChange={(e) =>
                                 setsiteinfo({
@@ -69,12 +69,12 @@ const SiteInfo = () => {
                               value={siteinfo?.title}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Description
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               onChange={(e) =>
                                 setsiteinfo({
@@ -85,10 +85,10 @@ const SiteInfo = () => {
                               value={siteinfo?.description}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">Tags</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               onChange={(e) =>
                                 setsiteinfo({
@@ -102,7 +102,7 @@ const SiteInfo = () => {
 
                           <button
                             type="submit"
-                            class="btn btn-primary me-2"
+                            className="btn btn-primary me-2"
                             onClick={submit}
                             style={{ width: "13%" }}
                             disabled={loading}

@@ -22,6 +22,9 @@ import { allUserAction } from '../actions/userActions';
 import SmartEditor from '../components/SmartEditor';
 import jwt_decode from "jwt-decode";
 import { useAuth } from '../hooks/user-auth';
+import { axiosRequest } from '../http/request';
+import { endpoint } from '../config/endpoinsts';
+import { toast } from 'react-toastify';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -101,24 +104,30 @@ function AddPost() {
   const [pageTags, setpageTags] = useState();
   const [newPostId, setNewPostId] = useState();
   const [newPostTitle, setNewPostTitle] = useState();
-const [isBreaking , setisBreaking] = useState(false)
+  const [isBreaking, setisBreaking] = useState(false)
   const postList = useSelector((state) => state.postList);
   const { posts, loading } = postList;
 
   const imageHandler = async (e) => {
-    const file = e.target.files[0];
+    try {
+      const file = e.target.files[0];
 
-    setLoad(true);
-    const formdata = new FormData();
-    formdata.append('file', file);
-    formdata.append('upload_preset', 'thehawk');
-    const res = await axios.post(
-      'https://api.cloudinary.com/v1_1/thehawk/upload',
-      formdata
-    );
+      setLoad(true);
+      const formdata = new FormData();
+      formdata.append('file', file);
 
-    setImage(res.data.secure_url);
-    setLoad(false);
+      const { data } = await axiosRequest.post(
+        endpoint.media.single,
+        formdata
+      );
+
+      setImage(data?.url);
+      toast.success('Uploaded')
+      setLoad(false);
+    } catch (error) {
+      toast.error(error.message)
+    }
+
   };
 
   const setdatFromMedia = (url) => {
@@ -139,7 +148,7 @@ const [isBreaking , setisBreaking] = useState(false)
     setName(auth.user.name);
     set_id(auth.user._id);
     setProfessionalName(auth.user.professionalName);
-  }, [ auth.user , dispatch]);
+  }, [auth.user, dispatch]);
 
   const categoryIdHandel = (e) => {
     setCategory(e.target.value);
@@ -220,7 +229,7 @@ const [isBreaking , setisBreaking] = useState(false)
       setIsRight(false);
       setCategoryId('');
       setIsFetaured(false);
-setisBreaking(false);
+      setisBreaking(false);
       setIsFetauredTop(false);
       setDisable(true);
       setLoad(false);
@@ -266,40 +275,40 @@ setisBreaking(false);
             <div className="content-wrapper">
               <div className="row">
                 <div className="col-sm-12">
-                  <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">Add post</h4>
-                        <p class="card-description">All post details</p>
-                        <form class="forms-sample">
-                          <div class="form-group">
+                  <div className="col-12 grid-margin stretch-card">
+                    <div className="card">
+                      <div className="card-body">
+                        <h4 className="card-title">Add post</h4>
+                        <p className="card-description">All post details</p>
+                        <form className="forms-sample">
+                          <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Post Title
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="Title"
                               onChange={(e) => setTitle(e.target.value)}
                               value={title}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label>Sub Heading</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="Sub Heading"
                               onChange={(e) => setSubHeading(e.target.value)}
                               value={subHeading}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleFormControlTextarea1">
                               Post text
                             </label>
                             <textarea
-                              class="form-control"
+                              className="form-control"
                               id="exampleFormControlTextarea1"
                               rows="3"
                               onChange={(e) => setText(e.target.value)}
@@ -308,7 +317,7 @@ setisBreaking(false);
                           </div>
                           <label className="mb-2">Post full text</label>
 
-                          <SmartEditor userInfo= {userInfo} setuserInfo={setuserInfo} />
+                          <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo} />
 
                           <div className="mb-2 mt-3">Post Image</div>
                           {/* <h1>Image uploading {progress}%</h1> */}
@@ -342,10 +351,10 @@ setisBreaking(false);
                           </Button>
                           or Add video url
                           <br />
-                          <div class="form-group">
+                          <div className="form-group">
                             <label>Video embeded url</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="iframe/ youtube video embed link"
                               onChange={(e) => setVideo(e.target.value)}
@@ -358,13 +367,13 @@ setisBreaking(false);
                             *warning: this data will just working for video
                             section's posts
                           </span>
-                          <div class="form-group mt-3">
+                          <div className="form-group mt-3">
                             <label for="exampleFormControlFile1">
                               Image Alt (if you upload a new image then add
                               this.)
                             </label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="img alt"
                               onChange={(e) => setImgAlt(e.target.value)}
@@ -387,16 +396,16 @@ setisBreaking(false);
                             >
                               <DialogTitle>
                                 <h3>Medias</h3>
-                                <div class="form-group">
+                                <div className="form-group">
                                   <label>Search</label>
                                   <input
-                                    class="form-control"
+                                    className="form-control"
                                     type="text"
                                     placeholder="Enter Image Alt value to serach a specific image"
                                     onChange={(e) =>
                                       setsearchMediaUrl(e.target.value)
                                     }
-                                    // value={video}
+                                  // value={video}
                                   />
 
                                   <button
@@ -404,7 +413,7 @@ setisBreaking(false);
                                     className="btn btn-primary me-2"
                                     onClick={mediaSearch}
                                     style={{ marginTop: '10px' }}
-                                    // disabled={adPostLoad}
+                                  // disabled={adPostLoad}
                                   >
                                     Search
                                   </button>
@@ -464,13 +473,12 @@ setisBreaking(false);
                               >
                                 See the previw of your post on live
                                 <a
-                                  href={`/posts/${
-                                    newPostTitle &&
+                                  href={`/posts/${newPostTitle &&
                                     newPostTitle.replace(/\s+/g, '-')
-                                  }/${newPostId}`}
+                                    }/${newPostId}`}
                                   style={{ width: '83%', margin: '16px 57px' }}
                                   variant="outlined"
-                                  // onClick={afterPostHandelClose}
+                                // onClick={afterPostHandelClose}
                                 >
                                   View
                                 </a>
@@ -485,10 +493,10 @@ setisBreaking(false);
                               </DialogContentText>
                             </DialogContent>
                           </Dialog>
-                          <div class="form-group" style={{ marginTop: '20px' }}>
+                          <div className="form-group" style={{ marginTop: '20px' }}>
                             <label for="exampleSelectGender">Category</label>
                             <select
-                              class="form-control"
+                              className="form-control"
                               id="exampleSelectGender"
                               onChange={categoryIdHandel}
                               value={category}
@@ -502,12 +510,12 @@ setisBreaking(false);
                                 ))}
                             </select>
                           </div>
-                          <div class="form-group" style={{ marginTop: '20px' }}>
+                          <div className="form-group" style={{ marginTop: '20px' }}>
                             <label for="exampleSelectGender">
                               If you want to change the user
                             </label>
                             <select
-                              class="form-control"
+                              className="form-control"
                               id="exampleSelectGender"
                               onChange={userHandel}
                               value={name}
@@ -518,12 +526,12 @@ setisBreaking(false);
                                 ))}
                             </select>
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label for="exampleSelectGender">
                               Sub Category
                             </label>
                             <select
-                              class="form-control"
+                              className="form-control"
                               id="exampleSelectGender"
                               onChange={subCategoryIdHandel}
                               disabled={disable}
@@ -544,7 +552,7 @@ setisBreaking(false);
                                   ))}
                             </select>
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isfetaured">
                               Add as category fetaured post
                             </label>
@@ -560,7 +568,7 @@ setisBreaking(false);
                               checked={isFetaured}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isTopfetaured">Add to top</label>
                             <input
                               style={{
@@ -576,7 +584,7 @@ setisBreaking(false);
                               checked={isFetauredTop}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isRight">Add to Right Column</label>
                             <input
                               style={{
@@ -590,7 +598,7 @@ setisBreaking(false);
                               checked={isRight}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isRight">Tending?</label>
                             <input
                               style={{
@@ -604,7 +612,7 @@ setisBreaking(false);
                               checked={trend}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isRight"> DON'T MISS?</label>
                             <input
                               style={{
@@ -618,7 +626,7 @@ setisBreaking(false);
                               checked={popular}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isRight"> is Breaking</label>
                             <input
                               style={{
@@ -632,7 +640,7 @@ setisBreaking(false);
                               checked={isBreaking}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label htmlFor="isRight">
                               Social Share Button?
                             </label>
@@ -647,10 +655,10 @@ setisBreaking(false);
                               checked={socialShare}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label>Tags</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="use comma for write new tags or multiple tags"
                               onChange={(e) => setpageTags(e.target.value)}
@@ -658,20 +666,20 @@ setisBreaking(false);
                             />
                           </div>
                           <h5>SEO options</h5>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label>Page title</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="Write the page title"
                               onChange={(e) => setpageTitle(e.target.value)}
                               value={pageTitle}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label>Page Description</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="Write the page description"
                               onChange={(e) =>
@@ -680,10 +688,10 @@ setisBreaking(false);
                               value={pageDescription}
                             />
                           </div>
-                          <div class="form-group">
+                          <div className="form-group">
                             <label>Keywords</label>
                             <input
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               placeholder="use comma for write new Keywords or multiple Keywords"
                               onChange={(e) => setpageKeyWords(e.target.value)}
@@ -692,7 +700,7 @@ setisBreaking(false);
                           </div>
                           <button
                             type="submit"
-                            class="btn btn-primary me-2"
+                            className="btn btn-primary me-2"
                             onClick={postDataSubmit}
                             style={{ width: '13%' }}
                             disabled={adPostLoad}
