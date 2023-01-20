@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { styled } from "@mui/material/styles";
-import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
+
 import Button from "@mui/material/Button";
 import { listCategory } from "../actions/categoryActions";
 import ClipLoader from "react-spinners/ClipLoader";
-import { storage } from "../firebase";
+
 import { useNavigate, useParams } from "react-router-dom";
 import { listSubCategory } from "../actions/subCategoryAction";
 import Header from "../components/Header";
@@ -28,8 +28,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 function UpdateScreen() {
-        const Navigate = useNavigate();
-      
+  const Navigate = useNavigate();
+
   const id = useParams();
   const [open, setOpen] = useState(false);
   const postList = useSelector((state) => state.postList);
@@ -59,9 +59,6 @@ function UpdateScreen() {
     setuserInfo({ ...userInfo, description: value });
   };
 
-
-
-
   const Input = styled("input")({
     display: "none",
   });
@@ -70,7 +67,7 @@ function UpdateScreen() {
   const subCategoryList = useSelector((state) => state.subCategoryList);
   const { subCategories } = subCategoryList;
   const [imgAlt, setImgAlt] = useState("");
-const [isBreaking, setisBreaking] = useState(false);
+  const [isBreaking, setisBreaking] = useState(false);
   const [title, setTitle] = useState("");
   const [video, setVideo] = useState();
   const [text, setText] = useState("");
@@ -95,36 +92,44 @@ const [isBreaking, setisBreaking] = useState(false);
   const [pageDescription, setpageDescription] = useState();
   const [pageKeyWords, setpageKeyWords] = useState();
   const [pageTags, setpageTags] = useState();
-const [loadingData, setloadingData] = useState(false)
-  const [post, setPost] = useState({})
-  const getDataUpdateAble = async() => {
-     window.scrollTo({
-       top: 0,
-       behavior: 'smooth',
-     });
-setloadingData(true);
-const { data, status } = await axios.get(`/api/singlepost/${id.id}`);
-if (status===200) {
-  setloadingData(false);
-}
-setPost(...data.post)
-  }
+  const [loadingData, setloadingData] = useState(false);
+  const [post, setPost] = useState({});
+  const getDataUpdateAble = async () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    setloadingData(true);
+    const { data, status } = await axios.get(`/api/singlepost/${id.id}`);
+    if (status === 200) {
+      setloadingData(false);
+    }
+    setPost(...data.post);
+  };
   useEffect(() => {
-   getDataUpdateAble()
-  }, [])
-  
+    getDataUpdateAble();
+  }, []);
+
   useEffect(() => {
-console.log(post);
+    console.log(post);
     setText(post && post.postText);
 
     setTitle(post && post.postitle);
     setImgAlt(post && post.imgAlt);
     setImage(post && post.img);
-    setCategory(post && post.category &&post.category.name &&  post.category.name);
-    setSubCategory(post &&post.subCategory &&  post.subCategory.name &&  post.subCategory.name);
-    setSubCategoryId(post && post.subCategory &&post.subCategory.id &&  post.subCategory.id);
+    setCategory(
+      post && post.category && post.category.name && post.category.name
+    );
+    setSubCategory(
+      post && post.subCategory && post.subCategory.name && post.subCategory.name
+    );
+    setSubCategoryId(
+      post && post.subCategory && post.subCategory.id && post.subCategory.id
+    );
     setIsRight(post && post.isRight);
-    setCategoryId(post && post.category && post.category.id && post.category.id);
+    setCategoryId(
+      post && post.category && post.category.id && post.category.id
+    );
     setIsFetaured(post && post.isFetaured);
     setName(post?.author?.name);
     setisBreaking(post?.isBreaking);
@@ -145,27 +150,26 @@ console.log(post);
     setpageTags(post && post.tags);
     setVideo(post && post.video);
     setDisable(false);
-   
   }, [post, id.id]);
 
   const userHandel = (e) => {
     setName(e.target.value);
-   
+
     const filterCategory =
       users &&
       users.filter((curElem) => {
         return curElem.name === e.target.value;
       });
-      set_id(filterCategory[0]._id);
+    set_id(filterCategory[0]._id);
   };
   const imageHandler = async (e) => {
     const file = e.target.files[0];
     setLoad(true);
     const formdata = new FormData();
-    formdata.append('file', file);
-    formdata.append('upload_preset', 'thehawk');
+    formdata.append("file", file);
+    formdata.append("upload_preset", "thehawk");
     const res = await axios.post(
-      'https://api.cloudinary.com/v1_1/thehawk/upload',
+      "https://api.cloudinary.com/v1_1/thehawk/upload",
       formdata
     );
 
@@ -173,24 +177,23 @@ console.log(post);
     setLoad(false);
   };
 
-
   const setdatFromMedia = (url) => {
     setImage(url);
     setOpen(false);
   };
   const dispatch = useDispatch();
 
-  const auth = useAuth()
+  const auth = useAuth();
   useEffect(() => {
     dispatch(listCategory());
     dispatch(listSubCategory());
- 
-      dispatch(listpost());
-    
+
+    dispatch(listpost());
+
     // setName(auth.user.name);
     // set_id(auth.user._id);
     // setProfessionalName(auth.user.professionalName);
-  }, [  dispatch ]);
+  }, [dispatch]);
 
   const categoryIdHandel = (e) => {
     setCategory(e.target.value);
@@ -253,7 +256,7 @@ console.log(post);
       setIsRight(false);
       setCategoryId("");
       setIsFetaured(false);
-setisBreaking(false)
+      setisBreaking(false);
       setIsFetauredTop(false);
       setDisable(true);
       setLoad(false);
@@ -268,29 +271,28 @@ setisBreaking(false)
       setpageTags("");
       setVideo("");
       setImgAlt("");
-      Navigate('/admin/posts');
+      Navigate("/admin/posts");
     }
   };
-  
+
   useEffect(() => {
     dispatch(allUserAction());
-   
   }, [dispatch]);
 
-  const [mediaImgFromPost, setMediaImgFromPost] = useState('');
-  const [searchMediaUrl, setsearchMediaUrl] = useState('');
+  const [mediaImgFromPost, setMediaImgFromPost] = useState("");
+  const [searchMediaUrl, setsearchMediaUrl] = useState("");
 
-    const mediaSearch = async () => {
-      // searchMediaUrl;
-      const { data } = await axios.post(
-        `/api/media/?search=${searchMediaUrl}`,
-        {}
-      );
-      console.log(data);
-      if (data) {
-        setMediaImgFromPost(data);
-      }
-    };
+  const mediaSearch = async () => {
+    // searchMediaUrl;
+    const { data } = await axios.post(
+      `/api/media/?search=${searchMediaUrl}`,
+      {}
+    );
+    console.log(data);
+    if (data) {
+      setMediaImgFromPost(data);
+    }
+  };
   return (
     <>
       <Header />
