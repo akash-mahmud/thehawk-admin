@@ -24,7 +24,6 @@ app.use(
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-
       "default-src": ["'self'"],
       // I have stripe_set up
       "script-src": ["'self'", "'unsafe-inline'", "js.stripe.com"],
@@ -32,6 +31,8 @@ app.use(
         "'self'",
         "https://api.cloudinary.com",
         "http://localhost:8000",
+        "http://localhost:8000",
+        "https://admin.thehawk.in",
       ],
       "style-src": ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
       "frame-src": ["'self'", "js.stripe.com"],
