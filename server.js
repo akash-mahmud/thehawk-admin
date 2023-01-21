@@ -35,7 +35,12 @@ app.use(
         "https://admin.thehawk.in",
         "https://api.thehawk.in",
       ],
-      "style-src": ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "fonts.googleapis.com",
+        "https://cdn.quilljs.com/1.2.6/quill.snow.css",
+      ],
       "frame-src": ["'self'", "js.stripe.com"],
       "font-src": [
         "'self'",

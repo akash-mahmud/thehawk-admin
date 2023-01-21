@@ -29,6 +29,8 @@ jobs:
           cd thehawk-admin
           sudo git pull origin master
           sudo git status
+          touch .env
+          echo "${{ secrets.ENV_FILE }}" > .env
           sudo pnpm install --only=prod
           sudo pnpm run build
           pm2 restart thehawk-admin
