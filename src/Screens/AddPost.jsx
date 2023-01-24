@@ -314,7 +314,7 @@ function AddPost() {
                           </div>
                           <label className="mb-2">Post full text</label>
 
-                          <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo} data={post.description} />
+                          <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo}  />
 
                           <div className="mb-2 mt-3">Post Image</div>
                           {/* <h1>Image uploading {progress}%</h1> */}
