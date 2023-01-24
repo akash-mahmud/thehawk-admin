@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { EditorState, convertToRaw } from "draft-js";
+import { EditorState, convertToRaw, ContentState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 
@@ -9,8 +9,23 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { endpoint } from "../config/endpoinsts";
 import { axiosRequest } from "../http/request";
 import { toast } from "react-toastify";
-export default function SmartEditor({ userInfo, setuserInfo }) {
+import htmlToDraft from "html-to-draftjs";
+export default function SmartEditor({ userInfo, setuserInfo, data }) {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+useEffect(() => {
+  if (data) {
+
+    setuserInfo(data)
+    const Desc = htmlToDraft(data);
+
+    let descState = ContentState.createFromBlockArray(
+      Desc.contentBlocks,
+      Desc.entityMap
+    );
+
+    setEditorState(EditorState.createWithContent(descState));
+}
+}, [data])
 
   const uploadImageCallBack = async (file) => {
     const formdata = new FormData();

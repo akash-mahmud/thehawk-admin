@@ -11,9 +11,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { listSubCategory } from "../actions/subCategoryAction";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import ReactQuill from "react-quill";
-import EditorToolbar, { modules, formats } from "../components/EditorToolbar";
-import "react-quill/dist/quill.snow.css";
+
+import htmlToDraft from "html-to-draftjs";
+
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
@@ -25,7 +25,8 @@ import { useAuth } from "../hooks/user-auth";
 import { axiosRequest } from "../http/request";
 import { endpoint } from "../config/endpoinsts";
 import { toast } from "react-toastify";
-
+import SmartEditor from '../components/SmartEditor';
+import { ContentState, EditorState } from "draft-js";
 // import "./TextEditor.css";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -54,13 +55,9 @@ function UpdateScreen() {
   const afterPostHandelClose = () => {
     setAfterPostModalOpen(false);
   };
-  const [userInfo, setuserInfo] = useState({
-    description: "",
-  });
+  const [userInfo, setuserInfo] = useState('');
 
-  const ondescription = (value) => {
-    setuserInfo({ ...userInfo, description: value });
-  };
+
 
   const Input = styled("input")({
     display: "none",
@@ -114,7 +111,7 @@ function UpdateScreen() {
   }, []);
 
   useEffect(() => {
-    console.log(post);
+
     setText(post && post.postText);
 
     setTitle(post && post.postitle);
@@ -142,9 +139,11 @@ function UpdateScreen() {
     setLoad(false);
     setTrend(post && post.isTrending);
     setPopular(post && post.isPopular);
-    if (post && post.description) {
-      setuserInfo({ description: post.description });
-    }
+    
+
+      setuserInfo(post && post.description);
+
+
     setSubHeading(post && post.subHeading);
     setSocialShare(post && post.socialShare);
     setpageKeyWords(post && post.keyWords);
@@ -238,7 +237,7 @@ function UpdateScreen() {
       _id,
       trend,
       popular,
-      description: userInfo.description,
+      description: userInfo,
       subHeading,
       socialShare,
       professionalName,
@@ -266,7 +265,8 @@ function UpdateScreen() {
       setLoad(false);
       setTrend(false);
       setPopular(false);
-      setuserInfo({ ...userInfo, description: "" });
+      
+      setuserInfo('');
       setSubHeading("");
       setSocialShare(false);
       setpageKeyWords("");
@@ -292,7 +292,7 @@ function UpdateScreen() {
       `${endpoint.media.getAll}/?search=${searchMediaUrl}`,
       {}
     );
-    console.log(data);
+
     if (data) {
       setMediaImgFromPost(data);
     }
@@ -349,15 +349,7 @@ function UpdateScreen() {
                               ></textarea>
                             </div>
                             <label className="mb-2">Post full text</label>
-                            <EditorToolbar toolbarId={"t1"} />
-                            <ReactQuill
-                              theme="snow"
-                              value={userInfo.description}
-                              onChange={ondescription}
-                              placeholder={"Write the full post content..."}
-                              modules={modules("t1")}
-                              formats={formats}
-                            />
+                            <SmartEditor data={post.description} userInfo={userInfo} setuserInfo={setuserInfo} />
                             <div className="mb-2 mt-3">Post Image</div>
                             {/* <h1>Image uploading {progress}%</h1> */}
                             <label htmlFor="contained-button-file">

@@ -60,10 +60,7 @@ function AddPost() {
   };
   const [userInfo, setuserInfo] = useState('');
 
-  const ondescription = (value) => {
-    setuserInfo({ ...userInfo, description: value });
-    console.log(userInfo);
-  };
+
 
   const Input = styled('input')({
     display: 'none',
@@ -317,7 +314,7 @@ function AddPost() {
                           </div>
                           <label className="mb-2">Post full text</label>
 
-                          <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo} />
+                          <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo} data={post.description} />
 
                           <div className="mb-2 mt-3">Post Image</div>
                           {/* <h1>Image uploading {progress}%</h1> */}
