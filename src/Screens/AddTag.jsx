@@ -30,10 +30,10 @@ export default function AddTag() {
     
   return (
     <>
-          <Header />
+       
           <div className="container-scroller">
               <div className="container-fluid page-body-wrapper">
-                  <Sidebar />
+         
                   <div className="main-panel">
                       <div className="content-wrapper">
                           <div className="row">

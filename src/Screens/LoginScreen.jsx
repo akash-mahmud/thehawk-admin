@@ -6,6 +6,7 @@ import {  useLocation, useNavigate } from "react-router-dom";
 import { signin } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import {  toast } from 'react-toastify';
+import BlankLayout from "../layout/BlankLayout";
 
 function LoginScreen() {
   const navigate = useNavigate();
@@ -34,48 +35,60 @@ function LoginScreen() {
   return (
     <>
     
-      <div className="container-scroller">
-        <div className="container-fluid page-body-wrapper full-page-wrapper">
-          <div className="content-wrapper d-flex align-items-center auth px-0">
-            <div className="row w-100 mx-0">
-              <div className="col-lg-4 mx-auto">
-                <div className="auth-form-light text-left py-5 px-4 px-sm-5">
-                  <h4 style={{ textAlign: "center" }}>Thehawk</h4>
 
-                  <form className="pt-3">
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        className="form-control form-control-lg"
-                        id="exampleInputEmail1"
-                        placeholder="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="password"
-                        className="form-control form-control-lg"
-                        id="exampleInputPassword1"
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </div>
-                    <div className="mt-3">
-                      <a
-                        className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                        onClick={submit}
-                      >
-                        Login
-                      </a>
-                    </div>
-                  </form>
-                </div>
+
+      <BlankLayout>
+        <section className="max-w-6xl  mx-auto px-8 my-0">
+
+          <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+            <div className="card p-4 max-w-md w-full">
+              <div className="flex place-content-center items-center pt-4">
+                <a href="index.html" className="flex items-center text-xl mr-4 hover:no-underline ">
+
+                  <span className="mr-1 -mt-1 text-primary"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path></svg></span>
+                  <span><strong>Thehawk</strong></span>
+                </a>
               </div>
+
+
+
+
+
+              <form action="admin.html" novalidate="">
+                <div className="form-group">
+                  <label className="text-label" for="email_2">Email Address:</label>
+                  <div className="input-group input-group-merge">
+                    <input id="email_2" type="email" required onChange={(e) => setEmail(e.target.value)} className="form-control form-control-prepended" placeholder="john@doe.com" />
+                    <div className="input-group-prepend">
+                      <div className="input-group-text">
+                        <span className="far fa-envelope"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label className="text-label" for="password_2">Password:</label>
+                  <div className="input-group input-group-merge">
+                    <input id="password_2" type="password" onChange={(e) => setPassword(e.target.value)} required="" className="form-control form-control-prepended" placeholder="Enter your password" />
+                    <div className="input-group-prepend">
+                      <div className="input-group-text">
+                        <span className="fa fa-key"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <button onClick={submit} className="btn block btn-primary" type="submit">Login</button>
+                </div>
+
+
+              </form>
+
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </BlankLayout>
+    
     </>
   );
 }

@@ -11,7 +11,7 @@ import { listSubCategory } from '../actions/subCategoryAction';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 
-import 'react-quill/dist/quill.snow.css';
+
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -264,10 +264,10 @@ function AddPost() {
   };
   return (
     <>
-      <Header />
+
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
-          <Sidebar />
+
           <div className="main-panel">
             <div className="content-wrapper">
               <div className="row">
@@ -314,7 +314,7 @@ function AddPost() {
                           </div>
                           <label className="mb-2">Post full text</label>
 
-                          <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo} data={post.description} />
+                          <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo}  />
 
                           <div className="mb-2 mt-3">Post Image</div>
                           {/* <h1>Image uploading {progress}%</h1> */}

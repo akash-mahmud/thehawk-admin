@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 import { useAuth } from "./hooks/user-auth";
+import AuthLayout from "./layout/AuthLayout";
 
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated.
@@ -16,7 +17,10 @@ function PrivateRoutes({ children, ...rest }) {
     <>
       {auth.user && !auth.loadingUser ? (
         <>
-          <Outlet />{" "}
+          <AuthLayout>
+            <Outlet />
+          </AuthLayout>
+       
         </>
       ) : (
         <Navigate to="/admin/login" />
