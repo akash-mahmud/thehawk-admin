@@ -46,7 +46,7 @@ useEffect(() => {
     <>
       <div className="form-group">
         <label>Description</label>
-        <Editor
+        <Editor editorClassName="h-32	"
           editorState={editorState}
           onEditorStateChange={(newState) => {
             setEditorState(newState);

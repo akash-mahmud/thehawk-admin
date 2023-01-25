@@ -25,7 +25,7 @@ function Header() {
 
 
       <div id="header" class="mdk-header js-mdk-header m-0" style={{
-        position: 'sticky',
+        position: 'fixed',
         top: 0
       }}>
         <div class="mdk-header__content">

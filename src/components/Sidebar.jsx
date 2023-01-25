@@ -21,19 +21,7 @@ import { url } from "../config/url";
 
 
 function Sidebar() {
-  const [admin, setAdmin] = useState();
-  const auth = useAuth()
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userInfo"));
-
-    setAdmin(user && user.isAdmin && user.isAdmin);
-  }, []);
-  const [userData, setUserData] = useState();
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userInfo"));
-    setUserData(user);
-  }, []);
+  const auth = useAuth();
 
   return (
     <>
@@ -59,9 +47,13 @@ function Sidebar() {
                   </div>
                   <div class="leading-none">
 
-                    <div class="mb-1"><strong>Adrian Demian</strong></div>
+                    <div class="mb-1"><strong> { auth?.user?.name ? auth?.user?.name : ""}</strong></div>
 
-                    <small class="text-muted text-xs">ACCOUNT MANAGER</small>
+                    <small class="text-muted text-xs">
+                      {
+auth?.user?.isAdmin?'Admin':'Author'
+                      }
+                    </small>
                   </div>
 
                 </a>
@@ -195,13 +187,6 @@ function Sidebar() {
                       <span class="sidebar-menu-text">Schema</span>
                     </Link>
                   </Collapsible>
-
-
-
-
-
-
-
 
                 </li>
                 <li class="sidebar-menu-item">

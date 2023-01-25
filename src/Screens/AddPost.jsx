@@ -276,14 +276,15 @@ function AddPost() {
                     <div className="card">
                       <div className="card-body">
                         <h4 className="card-title">Add post</h4>
-                        <p className="card-description">All post details</p>
-                        <form className="forms-sample">
+                      
+                        <form className="card p-6">
                           <div className="form-group">
                             <label for="exampleFormControlFile1">
                               Post Title
                             </label>
+                            {/* form-input mt-1 block w-full placeholder-muted */}
                             <input
-                              className="form-control"
+                              className=" form-input placeholder-muted border-1  form-control"
                               type="text"
                               placeholder="Title"
                               onChange={(e) => setTitle(e.target.value)}
@@ -293,7 +294,7 @@ function AddPost() {
                           <div className="form-group">
                             <label>Sub Heading</label>
                             <input
-                              className="form-control"
+                              className=" form-input placeholder-muted border-1  form-control"
                               type="text"
                               placeholder="Sub Heading"
                               onChange={(e) => setSubHeading(e.target.value)}
@@ -305,14 +306,14 @@ function AddPost() {
                               Post text
                             </label>
                             <textarea
-                              className="form-control"
+                              className=" form-input placeholder-muted border-1 w-full  form-control"
                               id="exampleFormControlTextarea1"
                               rows="3"
                               onChange={(e) => setText(e.target.value)}
                               value={text}
                             ></textarea>
                           </div>
-                          <label className="mb-2">Post full text</label>
+                       
 
                           <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo}  />
 
@@ -351,7 +352,7 @@ function AddPost() {
                           <div className="form-group">
                             <label>Video embeded url</label>
                             <input
-                              className="form-control"
+                              className="form-input placeholder-muted border-1  form-control"
                               type="text"
                               placeholder="iframe/ youtube video embed link"
                               onChange={(e) => setVideo(e.target.value)}
@@ -370,7 +371,7 @@ function AddPost() {
                               this.)
                             </label>
                             <input
-                              className="form-control"
+                              className="form-input placeholder-muted border-1  form-control"
                               type="text"
                               placeholder="img alt"
                               onChange={(e) => setImgAlt(e.target.value)}
@@ -490,10 +491,10 @@ function AddPost() {
                               </DialogContentText>
                             </DialogContent>
                           </Dialog>
-                          <div className="form-group" style={{ marginTop: '20px' }}>
+                          <div className="" style={{ marginTop: '20px' }}>
                             <label for="exampleSelectGender">Category</label>
                             <select
-                              className="form-control"
+                              className="form-select mt-1 block w-full border-1"
                               id="exampleSelectGender"
                               onChange={categoryIdHandel}
                               value={category}
@@ -507,12 +508,12 @@ function AddPost() {
                                 ))}
                             </select>
                           </div>
-                          <div className="form-group" style={{ marginTop: '20px' }}>
+                          <div className="" style={{ marginTop: '20px' }}>
                             <label for="exampleSelectGender">
                               If you want to change the user
                             </label>
                             <select
-                              className="form-control"
+                              className="form-select mt-1 block w-full border-1"
                               id="exampleSelectGender"
                               onChange={userHandel}
                               value={name}
@@ -523,12 +524,12 @@ function AddPost() {
                                 ))}
                             </select>
                           </div>
-                          <div className="form-group">
+                          <div className="">
                             <label for="exampleSelectGender">
                               Sub Category
                             </label>
                             <select
-                              className="form-control"
+                              className="form-select mt-1 block w-full border-1"
                               id="exampleSelectGender"
                               onChange={subCategoryIdHandel}
                               disabled={disable}
@@ -626,6 +627,7 @@ function AddPost() {
                           <div className="form-group">
                             <label htmlFor="isRight"> is Breaking</label>
                             <input
+                              
                               style={{
                                 height: '28px',
                                 width: '18px',
@@ -655,7 +657,7 @@ function AddPost() {
                           <div className="form-group">
                             <label>Tags</label>
                             <input
-                              className="form-control"
+                              className="form-input placeholder-muted border-1  form-control"
                               type="text"
                               placeholder="use comma for write new tags or multiple tags"
                               onChange={(e) => setpageTags(e.target.value)}
@@ -666,7 +668,7 @@ function AddPost() {
                           <div className="form-group">
                             <label>Page title</label>
                             <input
-                              className="form-control"
+                              className="form-input placeholder-muted border-1  form-control"
                               type="text"
                               placeholder="Write the page title"
                               onChange={(e) => setpageTitle(e.target.value)}
@@ -676,7 +678,7 @@ function AddPost() {
                           <div className="form-group">
                             <label>Page Description</label>
                             <input
-                              className="form-control"
+                              className="form-input placeholder-muted border-1  form-control"
                               type="text"
                               placeholder="Write the page description"
                               onChange={(e) =>
@@ -688,22 +690,25 @@ function AddPost() {
                           <div className="form-group">
                             <label>Keywords</label>
                             <input
-                              className="form-control"
+                              className="form-input placeholder-muted border-1  form-control"
                               type="text"
                               placeholder="use comma for write new Keywords or multiple Keywords"
                               onChange={(e) => setpageKeyWords(e.target.value)}
                               value={pageKeyWords}
                             />
                           </div>
+                          <div className='flex '>
+
                           <button
                             type="submit"
                             className="btn btn-primary me-2"
                             onClick={postDataSubmit}
-                            style={{ width: '13%' }}
+                          
                             disabled={adPostLoad}
                           >
                             Post
                           </button>
+                          </div>
                         </form>
                         <ClipLoader
                           color="skyblue"
@@ -719,6 +724,8 @@ function AddPost() {
           </div>
         </div>
       </div>
+
+
     </>
   );
 }

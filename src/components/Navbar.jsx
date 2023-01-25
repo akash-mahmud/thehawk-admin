@@ -1,6 +1,8 @@
 import React from 'react'
 
 export default function Navbar() {
+
+
   return (
       <div class="lg:pl-4 px-8 flex flex-wrap items-center">
           <div class="items-center">
@@ -17,7 +19,9 @@ export default function Navbar() {
                           </g>
                       </svg>
                   </span>
-                  <span><strong>TailStack <small>v2</small></strong></span>
+                  <span><strong>Thehawk 
+                    {/* <small>v2</small> */}
+                  </strong></span>
               </a>
           </div>
 

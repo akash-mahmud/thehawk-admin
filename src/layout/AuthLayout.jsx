@@ -11,7 +11,7 @@ export default function AuthLayout({children}) {
                     <div class="mdk-header-layout__content">
 
                         <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
-                            <div class="mdk-drawer-layout__content page">
+                            <div class="mdk-drawer-layout__content page mt-10 pt-5">
                                 {children}
                             </div>
 

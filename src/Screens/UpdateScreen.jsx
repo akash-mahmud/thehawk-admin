@@ -319,7 +319,7 @@ function UpdateScreen() {
                                 Post Title
                               </label>
                               <input
-                                className="form-control"
+                                className="form-input placeholder-muted border-1  form-control"
                                 type="text"
                                 placeholder="Title"
                                 onChange={(e) => setTitle(e.target.value)}
@@ -329,7 +329,7 @@ function UpdateScreen() {
                             <div className="form-group">
                               <label>Sub Heading</label>
                               <input
-                                className="form-control"
+                                className="form-input placeholder-muted border-1  form-control"
                                 type="text"
                                 placeholder="Sub Heading"
                                 onChange={(e) => setSubHeading(e.target.value)}
@@ -341,7 +341,7 @@ function UpdateScreen() {
                                 Post text
                               </label>
                               <textarea
-                                className="form-control"
+                                className="form-input placeholder-muted border-1 w-full  form-control"
                                 id="exampleFormControlTextarea1"
                                 rows="3"
                                 onChange={(e) => setText(e.target.value)}
@@ -385,7 +385,7 @@ function UpdateScreen() {
                             <div className="form-group">
                               <label>Video embeded url</label>
                               <input
-                                className="form-control"
+                                className="form-input placeholder-muted border-1  form-control"
                                 type="text"
                                 placeholder="iframe/ youtube video embed link"
                                 onChange={(e) => setVideo(e.target.value)}
@@ -405,7 +405,7 @@ function UpdateScreen() {
                                 this.)
                               </label>
                               <input
-                                className="form-control"
+                                className="form-input placeholder-muted border-1  form-control"
                                 type="text"
                                 placeholder="img alt"
                                 onChange={(e) => setImgAlt(e.target.value)}
@@ -431,7 +431,7 @@ function UpdateScreen() {
                                   <div className="form-group">
                                     <label>Search</label>
                                     <input
-                                      className="form-control"
+                                      className="form-input placeholder-muted border-1  form-control"
                                       type="text"
                                       placeholder="Enter Image Alt value to serach a specific image"
                                       onChange={(e) =>
@@ -531,7 +531,7 @@ function UpdateScreen() {
                             >
                               <label for="exampleSelectGender">Category</label>
                               <select
-                                className="form-control"
+                                className="form-select mt-1 block w-full border-1"
                                 id="exampleSelectGender"
                                 onChange={categoryIdHandel}
                                 value={category}
@@ -553,7 +553,7 @@ function UpdateScreen() {
                                 If you want to change the user
                               </label>
                               <select
-                                className="form-control"
+                                className="form-select mt-1 block w-full border-1"
                                 id="exampleSelectGender"
                                 onChange={userHandel}
                                 value={name}
@@ -569,7 +569,7 @@ function UpdateScreen() {
                                 Sub Category
                               </label>
                               <select
-                                className="form-control"
+                                className="form-select mt-1 block w-full border-1"
                                 id="exampleSelectGender"
                                 onChange={subCategoryIdHandel}
                                 disabled={disable}
@@ -705,7 +705,7 @@ function UpdateScreen() {
                             <div className="form-group">
                               <label>Tags</label>
                               <input
-                                className="form-control"
+                                className="form-input placeholder-muted border-1  form-control"
                                 type="text"
                                 placeholder="use comma for write new tags or multiple tags"
                                 onChange={(e) => setpageTags(e.target.value)}
@@ -716,7 +716,7 @@ function UpdateScreen() {
                             <div className="form-group">
                               <label>Page title</label>
                               <input
-                                className="form-control"
+                                className="form-input placeholder-muted border-1  form-control"
                                 type="text"
                                 placeholder="Write the page title"
                                 onChange={(e) => setpageTitle(e.target.value)}
@@ -726,7 +726,7 @@ function UpdateScreen() {
                             <div className="form-group">
                               <label>Page Description</label>
                               <input
-                                className="form-control"
+                                className="form-input placeholder-muted border-1  form-control"
                                 type="text"
                                 placeholder="Write the page description"
                                 onChange={(e) =>
@@ -738,7 +738,7 @@ function UpdateScreen() {
                             <div className="form-group">
                               <label>Keywords</label>
                               <input
-                                className="form-control"
+                                className="form-input placeholder-muted border-1  form-control"
                                 type="text"
                                 placeholder="use comma for write new Keywords or multiple Keywords"
                                 onChange={(e) =>

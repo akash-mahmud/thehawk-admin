@@ -37,3 +37,8 @@
   color: #fff;
   background: rgba(255, 255, 255, 0.12);
 }
+.rdw-editor-main {
+  min-height: 300px !important;
+  border: 1px solid #ccc !important;
+  margin-bottom: 19px !important;
+}
