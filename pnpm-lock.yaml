@@ -38,6 +38,7 @@ specifiers:
   react-draft-wysiwyg: ^1.14.7
   react-helmet: ^6.1.0
   react-infinite-scroll-component: ^6.1.0
+  react-loading: ^2.0.3
   react-loading-skeleton: ^3.1.0
   react-paginate: ^8.1.4
   react-redux: ^7.2.6
@@ -95,6 +96,7 @@ dependencies:
   react-draft-wysiwyg: 1.15.0_vwkndvbwk2htniqceft4kr224a
   react-helmet: 6.1.0_react@17.0.2
   react-infinite-scroll-component: 6.1.0_react@17.0.2
+  react-loading: 2.0.3_at7mkepldmzoo6silmqc5bca74
   react-loading-skeleton: 3.1.0_react@17.0.2
   react-paginate: 8.1.4_react@17.0.2
   react-redux: 7.2.9_sfoxds7t5ydpegc3knd667wn6m
@@ -4011,6 +4013,16 @@ packages:
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
+      react: 17.0.2
+    dev: false
+
+  /react-loading/2.0.3_at7mkepldmzoo6silmqc5bca74:
+    resolution: {integrity: sha512-Vdqy79zq+bpeWJqC+xjltUjuGApyoItPgL0vgVfcJHhqwU7bAMKzysfGW/ADu6i0z0JiOCRJjo+IkFNkRNbA3A==}
+    peerDependencies:
+      prop-types: ^15.6.0
+      react: '>=0.14.0'
+    dependencies:
+      prop-types: 15.8.1
       react: 17.0.2
     dev: false
 

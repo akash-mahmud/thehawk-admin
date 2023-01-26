@@ -17,6 +17,7 @@ app.use(
       "http://localhost:5173",
       "http://127.0.0.1:3000",
       "http://localhost:3000",
+      "https://thehawk.s3.ap-south-1.amazonaws.com",
     ],
   })
 );
@@ -34,6 +35,7 @@ app.use(
         "http://localhost:8000",
         "https://admin.thehawk.in",
         "https://api.thehawk.in",
+        "https://thehawk.s3.ap-south-1.amazonaws.com",
       ],
       "style-src": [
         "'self'",
@@ -48,7 +50,12 @@ app.use(
         "fonts.gstatic.com",
         "res.cloudinary.com/",
       ],
-      "img-src": ["'self'", "data:", "https://res.cloudinary.com"],
+      "img-src": [
+        "'self'",
+        "data:",
+        "https://res.cloudinary.com",
+        "https://thehawk.s3.ap-south-1.amazonaws.com",
+      ],
     },
     reportOnly: false,
   })

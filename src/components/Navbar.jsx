@@ -1,7 +1,17 @@
 import React from 'react'
-
+import { useNavigate } from "react-router-dom";
+import { endpoint } from "../config/endpoinsts";
 export default function Navbar() {
+    const navigate = useNavigate();
+    const logout = async () => {
+        localStorage.removeItem("userInfo");
+        localStorage.removeItem("userInfoExpiry");
+        const responsce = await axiosRequest.get(endpoint.user.logout);
 
+        if (responsce.data.logout) {
+            navigate("/admin/login");
+        }
+    };
 
   return (
       <div class="lg:pl-4 px-8 flex flex-wrap items-center">
@@ -53,7 +63,7 @@ export default function Navbar() {
               <ul class="lg:flex items-center justify-between text-md text-gray-900 font-semibold pt-4 lg:pt-0">
                   <li class="relative inline-block text-left">
                       <button class="flex items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue1" aria-haspopup="true" aria-expanded="true">
-                          Features
+                          Send email
                       </button>
 
                       <div class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
@@ -71,21 +81,17 @@ export default function Navbar() {
                       </div>
 
                   </li>
-                  <li>
-                      <a href="#" class="flex items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue" aria-haspopup="true" aria-expanded="true">
-                          Pricing
-                      </a>
-                  </li>
+                
                   {/* <li> */}
-                  <li>
+                  {/* <li>
                       <a href="#" class="flex items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue2" aria-haspopup="true" aria-expanded="true">
                           Sign in
                       </a>
-                  </li>
+                  </li> */}
 
-                  <li class="mr-4 text-muted">or</li>
+                  {/* <li class="mr-4 text-muted">or</li> */}
                   <li>
-                      <a class="btn btn-success" href="login.html">Login</a>
+                      <button onClick={logout} class="btn btn-danger" >Log out</button>
                   </li>
               </ul>
 

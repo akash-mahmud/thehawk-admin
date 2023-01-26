@@ -6,8 +6,7 @@ import { listpost } from '../actions/postActions';
 import { Link } from 'react-router-dom';
 import Dialog from '@mui/material/Dialog';
 import ClipLoader from 'react-spinners/ClipLoader';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+
 import { allUserAction } from '../actions/userActions';
 
 import Pagination from '../components/Pagination';

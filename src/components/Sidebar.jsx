@@ -47,11 +47,11 @@ function Sidebar() {
                   </div>
                   <div class="leading-none">
 
-                    <div class="mb-1"><strong> { auth?.user?.name ? auth?.user?.name : ""}</strong></div>
+                    <div class="mb-1"><strong> {auth?.user?.name ? auth?.user?.name : ""}</strong></div>
 
                     <small class="text-muted text-xs">
                       {
-auth?.user?.isAdmin?'Admin':'Author'
+                        auth?.user?.isAdmin ? 'Admin' : 'Author'
                       }
                     </small>
                   </div>
@@ -72,13 +72,13 @@ auth?.user?.isAdmin?'Admin':'Author'
                       <span class="sidebar-menu-text">System</span>
 
                     </a>
-                    <a class="sidebar-menu-button" href="admin-second.html">
+                    <Link class="sidebar-menu-button" to={"/admin/dashboard"}>
                       <span class="sidebar-menu-icon sidebar-menu-icon--left">
                         <svg class="w-6 h-6 -mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path></svg>
                       </span>
-                      <span class="sidebar-menu-text">Analytics</span>
+                      <span class="sidebar-menu-text">Database</span>
 
-                    </a>
+                    </Link>
                   </Collapsible>
                   {/* <a class="sidebar-menu-button" href="admin.html">
                   <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>

@@ -10,7 +10,9 @@ const CurrentPool = () => {
     try {
       const { data } = await axiosRequest.get(endpoint.pool.currentPool);
       setpool(data);
-    } catch (error) { }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   useEffect(() => {
     loadData();

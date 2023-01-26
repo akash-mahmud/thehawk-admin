@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import ClipLoader from "react-spinners/ClipLoader";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
-import { listCategory } from "../actions/categoryActions";
-import { listpost } from "../actions/postActions";
+
+
 import { listSubCategory } from "../actions/subCategoryAction";
 import { axiosRequest } from "../http/request";
 import { endpoint } from "../config/endpoinsts";
@@ -15,7 +13,7 @@ import { endpoint } from "../config/endpoinsts";
 function AllSubCategoryScreen() {
   const navigate = useNavigate();
 
-  // const [data, setData] = useState()
+
   const categoryList = useSelector((state) => state.categoryList);
   const { categories } = categoryList;
   // const postList = useSelector((state) => state.postList);
@@ -34,7 +32,7 @@ function AllSubCategoryScreen() {
     if (postId) {
       window.alert("Are you sure?");
       try {
-        const res = await axiosRequest.delete(endpoint.subcategory.delete.replace(':id' , postId));
+        const res = await axiosRequest.delete(endpoint.subcategory.delete.replace(':id', postId));
         if (res) {
           navigate('/admin/all/sub_category');
         }
@@ -55,7 +53,7 @@ function AllSubCategoryScreen() {
               <ClipLoader color="000" loading="true" size={54} />
             ) : (
 
-                <table class="table table-sm table-border rounded ">
+              <table class="table table-sm table-border rounded ">
                 <thead>
                   <tr>
                     {/* <th>Posted By</th> */}
@@ -83,7 +81,7 @@ function AllSubCategoryScreen() {
                         <td>
                           <button
                             className="btn btn-danger mb-2"
-                         
+
                             onClick={() =>
                               deleteHandel(category._id)
                             }
@@ -93,7 +91,7 @@ function AllSubCategoryScreen() {
 
                           <Link
                             className="btn btn-primary m-1"
-                          
+
                             to={`/admin/update_subcategory/${category._id}`}
                           >
                             Edit
@@ -108,10 +106,10 @@ function AllSubCategoryScreen() {
             )}
           </div>
         </div>
-        </section>
+      </section>
 
 
-             
+
 
     </>
   );

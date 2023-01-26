@@ -94,7 +94,7 @@ function AddUserScreen() {
                     <div className="card">
                       <div className="card-body">
                         <h4 className="card-title">Add a new user</h4>
-                        <p className="card-description">All Author details</p>
+                      
                         <form className="forms-sample">
                           <div className="form-group">
                             <label for="exampleFormControlFile1">Name</label>

@@ -39,84 +39,68 @@ function AllRssScreen() {
   // DE89370400440532013000;
   return (
     <>
-      {/* <Header /> */}
-      {/* <AuthLayout> */}
-      <div className="container-scroller">
-        <div className="container-fluid page-body-wrapper">
-          {/* <Sidebar /> */}
-          <div className="main-panel">
-            <div className="content-wrapper">
-              <div className="row">
-                <div className="col-sm-12">
-                  {loading === true ? (
-                    <ClipLoader color="000" loading="true" size={54} />
-                  ) : (
-                    <div className="col-md-12 grid-margin stretch-card">
-                      <div className="card">
-                        <div className="card-body">
-                          <h4 className="card-title">All Rss</h4>
+      <section class="max-w-6xl  mx-auto px-4">
+        <h1 class="my-8">Users</h1>
 
-                          <div className="">
-                            <table>
-                              <thead>
-                                <tr>
-                                  <th>Rss Title</th>
-                                  <th>Category</th>
-                                  <th>Created At</th>
+        <div class="card ">
 
-                                  <th>Actions</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {rss &&
-                                  rss.map((rssData) => (
-                                    <tr>
-                                      <td> {rssData.name}</td>
-                                      <td>{rssData.category.name}</td>
-                                      <td>
-                                        {new Date(
-                                          rssData.createdAt
-                                        ).toDateString()}
-                                      </td>
+          <div class="overflow-x-scroll lg:overflow-hidden">
+            {loading === true ? (
+              <ClipLoader color="000" loading="true" size={54} />
+            ) : (
 
-                                      <td>
-                                        <button
-                                          className="btn btn-danger mb-2"
-                                          style={{ padding: ' 0.875rem 1rem' }}
-                                          onClick={() =>
-                                            deleteHandel(rssData._id)
-                                          }
-                                        >
-                                          Trash
-                                        </button>
+              <table class="table table-sm table-border rounded ">
+                <thead>
+                  <tr>
+                    <th>Rss Title</th>
+                    <th>Category</th>
+                    <th>Created At</th>
 
-                                        <Link
-                                          className="btn btn-primary m-1"
-                                          style={{
-                                            textDecoration: 'none',
-                                            color: '#fff',
-                                            width: '100%',
-                                          }}
-                                          to={`/admin/updaterss/${rssData._id}`}
-                                        >
-                                          Edit
-                                        </Link>
-                                      </td>
-                                    </tr>
-                                  ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rss &&
+                    rss.map((rssData) => (
+                      <tr>
+                        <td> {rssData.name}</td>
+                        <td>{rssData.category.name}</td>
+                        <td>
+                          {new Date(
+                            rssData.createdAt
+                          ).toDateString()}
+                        </td>
+
+                        <td>
+                          <button
+                            className="btn btn-danger mb-2"
+
+                            onClick={() =>
+                              deleteHandel(rssData._id)
+                            }
+                          >
+                            Trash
+                          </button>
+
+                          <Link
+                            className="btn btn-primary m-1"
+
+                            to={`/admin/updaterss/${rssData._id}`}
+                          >
+                            Edit
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+
+
+            )}
+          </div> </div> </section>
+
+
+
       {/* </AuthLayout> */}
 
     </>
