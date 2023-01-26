@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
 import { axiosRequest } from '../http/request';
 import { endpoint } from '../config/endpoinsts';
 function AddCategory() {
@@ -14,7 +12,7 @@ function AddCategory() {
   const [text, setText] = useState('');
   const [pageTitle, setPageTitle] = useState('');
   const [pageKeywords, setPageKeywords] = useState('');
-  // position: req.body.position,
+
 
   const [addTop, setaddTop] = useState(false);
   const [position, setposition] = useState();

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
-import { styled } from "@mui/material/styles";
+
 import { useDispatch, useSelector } from "react-redux";
 import { listCategory } from "../actions/categoryActions";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+
 import { listSubCategory } from "../actions/subCategoryAction";
 import { endpoint } from "../config/endpoinsts";
 import { axiosRequest } from "../http/request";
@@ -82,10 +81,10 @@ function UpdateSubCategoryScreen() {
   };
   return (
     <>
-   
+
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
-  
+
           <div className="main-panel">
             <div className="content-wrapper">
               <div className="row">

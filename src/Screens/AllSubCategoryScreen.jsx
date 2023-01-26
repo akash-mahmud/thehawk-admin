@@ -44,86 +44,75 @@ function AllSubCategoryScreen() {
   };
   return (
     <>
+      <section class="max-w-6xl  mx-auto px-4">
+        <h1 class="my-8">Users</h1>
 
-      <div className="container-scroller">
-        <div className="container-fluid page-body-wrapper">
-     
-          <div className="main-panel">
-            <div className="content-wrapper">
-              <div className="row">
-                <div className="col-sm-12">
-                  {loading === true ? (
-                    <ClipLoader color="000" loading="true" size={54} />
-                  ) : (
-                    <div className="col-md-12 grid-margin stretch-card">
-                      <div className="card">
-                        <div className="card-body">
-                          <h4 className="card-title">All news Sub Categories</h4>
+        <div class="card ">
 
-                          <div className="">
-                            <table>
-                              <thead>
-                                <tr>
-                                  {/* <th>Posted By</th> */}
-                                  {/* <th>Post Id</th> */}
-                                  <th> Sub Category Name</th>
-                                  <th>Parent Category</th>
-                                  <th>Created At</th>
+          <div class="overflow-x-scroll lg:overflow-hidden">
 
-                                  <th>Actions</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {subCategories &&
-                                  subCategories.map((category) => (
-                                    <tr>
-                                      {/* <td>Someone</td> */}
-                                      {/* <td>{post._id}</td> */}
-                                      <td> {category.subCategoryName}</td>
-                                      <td>{category.category} </td>
-                                      <td>
-                                        {new Date(
-                                          category.createdAt
-                                        ).toDateString()}{' '}
-                                      </td>
-                                      <td>
-                                        <button
-                                          className="btn btn-danger mb-2"
-                                          style={{ padding: ' 0.875rem 1rem' }}
-                                          onClick={() =>
-                                            deleteHandel(category._id)
-                                          }
-                                        >
-                                          Trash
-                                        </button>
+            {loading === true ? (
+              <ClipLoader color="000" loading="true" size={54} />
+            ) : (
 
-                                        <Link
-                                          className="btn btn-primary m-1"
-                                          style={{
-                                            textDecoration: 'none',
-                                            color: '#fff',
-                                            width: '100%',
-                                          }}
-                                          to={`/admin/update_subcategory/${category._id}`}
-                                        >
-                                          Edit
-                                        </Link>
-                                      </td>
-                                    </tr>
-                                  ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+                <table class="table table-sm table-border rounded ">
+                <thead>
+                  <tr>
+                    {/* <th>Posted By</th> */}
+                    {/* <th>Post Id</th> */}
+                    <th> Sub Category Name</th>
+                    <th>Parent Category</th>
+                    <th>Created At</th>
+
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {subCategories &&
+                    subCategories.map((category) => (
+                      <tr>
+                        {/* <td>Someone</td> */}
+                        {/* <td>{post._id}</td> */}
+                        <td> {category.subCategoryName}</td>
+                        <td>{category.category} </td>
+                        <td>
+                          {new Date(
+                            category.createdAt
+                          ).toDateString()}{' '}
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-danger mb-2"
+                         
+                            onClick={() =>
+                              deleteHandel(category._id)
+                            }
+                          >
+                            Trash
+                          </button>
+
+                          <Link
+                            className="btn btn-primary m-1"
+                          
+                            to={`/admin/update_subcategory/${category._id}`}
+                          >
+                            Edit
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+
+
+            )}
           </div>
         </div>
-      </div>
+        </section>
+
+
+             
+
     </>
   );
 }

@@ -9,8 +9,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { listSubCategory } from "../actions/subCategoryAction";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+
 
 import htmlToDraft from "html-to-draftjs";
 
@@ -139,9 +138,9 @@ function UpdateScreen() {
     setLoad(false);
     setTrend(post && post.isTrending);
     setPopular(post && post.isPopular);
-    
 
-      setuserInfo(post && post.description);
+
+    setuserInfo(post && post.description);
 
 
     setSubHeading(post && post.subHeading);
@@ -265,7 +264,7 @@ function UpdateScreen() {
       setLoad(false);
       setTrend(false);
       setPopular(false);
-      
+
       setuserInfo('');
       setSubHeading("");
       setSocialShare(false);
@@ -299,11 +298,11 @@ function UpdateScreen() {
   };
   return (
     <>
- 
+
       <fieldset disabled={loadingData}>
         <div className="container-scroller">
           <div className="container-fluid page-body-wrapper">
-       
+
             <div className="main-panel">
               <div className="content-wrapper">
                 <div className="row">

@@ -8,8 +8,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 import { useNavigate } from 'react-router-dom';
 import { listSubCategory } from '../actions/subCategoryAction';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+
 
 
 import Dialog from '@mui/material/Dialog';
@@ -20,7 +19,7 @@ import Slide from '@mui/material/Slide';
 import { listpost } from '../actions/postActions';
 import { allUserAction } from '../actions/userActions';
 import SmartEditor from '../components/SmartEditor';
-import jwt_decode from "jwt-decode";
+
 import { useAuth } from '../hooks/user-auth';
 import { axiosRequest } from '../http/request';
 import { endpoint } from '../config/endpoinsts';
@@ -276,7 +275,7 @@ function AddPost() {
                     <div className="card">
                       <div className="card-body">
                         <h4 className="card-title">Add post</h4>
-                      
+
                         <form className="card p-6">
                           <div className="form-group">
                             <label for="exampleFormControlFile1">
@@ -313,9 +312,9 @@ function AddPost() {
                               value={text}
                             ></textarea>
                           </div>
-                       
 
-                          <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo}  />
+
+                          <SmartEditor userInfo={userInfo} setuserInfo={setuserInfo} />
 
                           <div className="mb-2 mt-3">Post Image</div>
                           {/* <h1>Image uploading {progress}%</h1> */}
@@ -627,7 +626,7 @@ function AddPost() {
                           <div className="form-group">
                             <label htmlFor="isRight"> is Breaking</label>
                             <input
-                              
+
                               style={{
                                 height: '28px',
                                 width: '18px',
@@ -699,15 +698,15 @@ function AddPost() {
                           </div>
                           <div className='flex '>
 
-                          <button
-                            type="submit"
-                            className="btn btn-primary me-2"
-                            onClick={postDataSubmit}
-                          
-                            disabled={adPostLoad}
-                          >
-                            Post
-                          </button>
+                            <button
+                              type="submit"
+                              className="btn btn-primary me-2"
+                              onClick={postDataSubmit}
+
+                              disabled={adPostLoad}
+                            >
+                              Post
+                            </button>
                           </div>
                         </form>
                         <ClipLoader

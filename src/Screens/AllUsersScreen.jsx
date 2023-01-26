@@ -62,7 +62,7 @@ function AllUsersScreen() {
     if (postId) {
       window.alert('Are you sure?');
       try {
-        const res = await axiosRequest.delete(endpoint.user.delete.replace(':id' , postId));
+        const res = await axiosRequest.delete(endpoint.user.delete.replace(':id', postId));
         if (res.status === 200) {
           dispatch(allUserAction());
           navigate('/admin/all_users');
@@ -165,353 +165,346 @@ function AllUsersScreen() {
 
   return (
     <>
-   
-      <div className="container-scroller">
-        <div className="container-fluid page-body-wrapper">
-  
-          <div className="main-panel">
-            <div className="content-wrapper">
-              <div className="row">
-                <div className="col-sm-12">
-                  {loading === true ? (
-                    <ClipLoader color="000" loading="true" size={54} />
-                  ) : (
-                    <>
-                      <Dialog
-                        fullScreen
-                        open={open}
-                        onClose={handleClose}
-                        TransitionComponent={Transition}
-                      >
-                        <div className="container-fluid ">
-                          <div className="main-panel">
-                            <div className="content-wrapper customViewPost">
-                              <div className="row">
-                                <div className="col-sm-12">
-                                  <div className="cloSeButton">
-                                    <button
-                                      className="btn btn-primary"
-                                      onClick={handleClose}
-                                    >
-                                      close
-                                    </button>
-                                  </div>
-                                  {postList.loading === true ? (
-                                    <ClipLoader
-                                      color="000"
-                                      loading="true"
-                                      size={54}
-                                    />
-                                  ) : (
-                                    <div className="col-md-12 grid-margin ">
-                                      <div className="card">
-                                        <div className="card-body">
-                                          {/* <h4 className="card-title text-center">
+
+      <section class="max-w-6xl  mx-auto px-4">
+        <h1 class="my-8">Users</h1>
+
+        <div class="card ">
+
+          <div class="overflow-x-scroll lg:overflow-hidden">
+
+            {loading === true ? (
+              <ClipLoader color="000" loading="true" size={54} />
+            ) : (
+              <>
+                <Dialog
+                  fullScreen
+                  open={open}
+                  onClose={handleClose}
+                  TransitionComponent={Transition}
+                >
+                  <div className="container-fluid ">
+                    <div className="main-panel">
+                      <div className="content-wrapper customViewPost">
+                        <div className="row">
+                          <div className="col-sm-12">
+                            <div className="cloSeButton">
+                              <button
+                                className="btn btn-primary"
+                                onClick={handleClose}
+                              >
+                                close
+                              </button>
+                            </div>
+                            {postList.loading === true ? (
+                              <ClipLoader
+                                color="000"
+                                loading="true"
+                                size={54}
+                              />
+                            ) : (
+                              <div className="col-md-12 grid-margin ">
+                                <div className="card">
+                                  <div className="card-body">
+                                    {/* <h4 className="card-title text-center">
                                             his post collection
                                           </h4> */}
 
-                                          <div className="allFilters">
-                                            <div
-                                              style={{
-                                                display: 'inline-block',
-                                                marginRight: '20px',
-                                              }}
-                                              className="filters mb-3 "
-                                            >
-                                              <span
-                                                style={{ display: 'block' }}
-                                              >
-                                                From
-                                              </span>
-                                              <input
-                                                type="date"
-                                                onChange={(e) =>
-                                                  setStartingDate(
-                                                    e.target.value
-                                                  )
-                                                }
-                                              />
-                                            </div>
+                                    <div className="allFilters">
+                                      <div
+                                        style={{
+                                          display: 'inline-block',
+                                          marginRight: '20px',
+                                        }}
+                                        className="filters mb-3 "
+                                      >
+                                        <span
+                                          style={{ display: 'block' }}
+                                        >
+                                          From
+                                        </span>
+                                        <input
+                                          type="date"
+                                          onChange={(e) =>
+                                            setStartingDate(
+                                              e.target.value
+                                            )
+                                          }
+                                        />
+                                      </div>
 
-                                            <div
-                                              style={{
-                                                display: 'inline-block',
-                                                marginRight: '20px',
-                                              }}
-                                              className="filters mb-3"
-                                            >
-                                              <span
-                                                style={{ display: 'block' }}
-                                              >
-                                                End
-                                              </span>
-                                              <input
-                                                type="date"
-                                                onChange={(e) =>
-                                                  setEndingDate(e.target.value)
-                                                }
-                                              />
-                                            </div>
-                                            <button
-                                              onClick={submitFilterDate}
-                                              style={{
-                                                display: 'inline-block',
-                                                'margin-right': '20px',
-                                                width: '112px',
-                                                padding: '8px',
-                                              }}
-                                              className="btn btn-info"
-                                            >
-                                              Filter
-                                            </button>
+                                      <div
+                                        style={{
+                                          display: 'inline-block',
+                                          marginRight: '20px',
+                                        }}
+                                        className="filters mb-3"
+                                      >
+                                        <span
+                                          style={{ display: 'block' }}
+                                        >
+                                          End
+                                        </span>
+                                        <input
+                                          type="date"
+                                          onChange={(e) =>
+                                            setEndingDate(e.target.value)
+                                          }
+                                        />
+                                      </div>
+                                      <button
+                                        onClick={submitFilterDate}
+                                        style={{
+                                          display: 'inline-block',
+                                          'margin-right': '20px',
+                                          width: '112px',
+                                          padding: '8px',
+                                        }}
+                                        className="btn btn-info"
+                                      >
+                                        Filter
+                                      </button>
 
-                                            <div
-                                              className="numberOfPosts"
-                                              style={{
-                                                display: 'inline-block',
-                                                width: '46%',
+                                      <div
+                                        className="numberOfPosts"
+                                        style={{
+                                          display: 'inline-block',
+                                          width: '46%',
 
-                                                textAlign: 'right',
-                                              }}
-                                            >
-                                              <h3>
-                                                {sort && sort.length} Posts
-                                              </h3>
-                                            </div>
-                                          </div>
-                                          <div className="">
-                                            <table>
-                                              <thead>
-                                                <tr>
-                                                  <th>Post Title</th>
-                                                  <th>Posted By</th>
-                                                  <th>Category</th>
-                                                  <th>Sub Category</th>
-
-                                                  <th>Featured</th>
-                                                  <th>Featured Top</th>
-                                                  <th>Posted At</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody>
-                                                {currentPosts &&
-                                                  currentPosts
-                                                    .filter(
-                                                      (curData) =>
-                                                        curData.author.id ===
-                                                        userId
-                                                    )
-                                                    .map((post) => (
-                                                      <tr>
-                                                        <td>
-                                                          {' '}
-                                                          {post.postitle}
-                                                        </td>
-                                                        <td>
-                                                          {post.author.name}
-                                                        </td>
-                                                        <td>
-                                                          {post.category.name}
-                                                        </td>
-                                                        <td>
-                                                          {
-                                                            post.subCategory
-                                                              .name
-                                                          }
-                                                        </td>
-
-                                                        <td>
-                                                          {post.isFetaured ===
-                                                            true
-                                                            ? 'Yes'
-                                                            : 'No'}
-                                                        </td>
-                                                        <td>
-                                                          {post.isFetauredTop ===
-                                                            true
-                                                            ? 'Yes'
-                                                            : 'No'}
-                                                        </td>
-                                                        <td>
-                                                          {new Date(
-                                                            post.createdAt
-                                                          ).toDateString()}
-                                                        </td>
-                                                      </tr>
-                                                    ))}
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                          <Pagination
-                                            postsPerPage={postsPerPage}
-                                            // totalPosts={sort && sort.length}
-                                            totalPosts={
-                                              (
-                                                posts &&
-                                                posts.filter(
-                                                  (curElem) =>
-                                                    curElem.author.id === userId
-                                                )
-                                              ).length
-                                            }
-                                            paginate={paginate}
-                                          // totalPosts=  {(currentPosts &&
-                                          //       currentPosts
-                                          //       .filter((curData)=> curData.author.id===userId)).length> 0 &&(
-                                          //         (currentPosts &&
-                                          //       currentPosts
-                                          //       .filter((curData)=> curData.author.id===userId)).length
-                                          //       ) }
-
-                                          //                 totalPosts={(currentPosts && currentPosts.filter((curData)=> curData.author.id===userId).length>0?(
-                                          //
-                                          //                     (currentPosts&& currentPosts.filter((data)=>data.author.id===userId).length)
-                                          //
-                                          //                 ):(
-                                          //
-                                          //                   (currentPosts&& currentPosts.filter((data)=>data.author.id===userId).length)
-                                          //                 ))}
-                                          />
-                                        </div>
+                                          textAlign: 'right',
+                                        }}
+                                      >
+                                        <h3>
+                                          {sort && sort.length} Posts
+                                        </h3>
                                       </div>
                                     </div>
-                                  )}
-                                  {/* {currentPosts &&
-                                                  currentPosts
-                                                  .filter((curData)=> curData.author.id===userId) */}
+                                    <div className="">
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>Post Title</th>
+                                            <th>Posted By</th>
+                                            <th>Category</th>
+                                            <th>Sub Category</th>
+
+                                            <th>Featured</th>
+                                            <th>Featured Top</th>
+                                            <th>Posted At</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          {currentPosts &&
+                                            currentPosts
+                                              .filter(
+                                                (curData) =>
+                                                  curData.author.id ===
+                                                  userId
+                                              )
+                                              .map((post) => (
+                                                <tr>
+                                                  <td>
+                                                    {' '}
+                                                    {post.postitle}
+                                                  </td>
+                                                  <td>
+                                                    {post.author.name}
+                                                  </td>
+                                                  <td>
+                                                    {post.category.name}
+                                                  </td>
+                                                  <td>
+                                                    {
+                                                      post.subCategory
+                                                        .name
+                                                    }
+                                                  </td>
+
+                                                  <td>
+                                                    {post.isFetaured ===
+                                                      true
+                                                      ? 'Yes'
+                                                      : 'No'}
+                                                  </td>
+                                                  <td>
+                                                    {post.isFetauredTop ===
+                                                      true
+                                                      ? 'Yes'
+                                                      : 'No'}
+                                                  </td>
+                                                  <td>
+                                                    {new Date(
+                                                      post.createdAt
+                                                    ).toDateString()}
+                                                  </td>
+                                                </tr>
+                                              ))}
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                    <Pagination
+                                      postsPerPage={postsPerPage}
+                                      // totalPosts={sort && sort.length}
+                                      totalPosts={
+                                        (
+                                          posts &&
+                                          posts.filter(
+                                            (curElem) =>
+                                              curElem.author.id === userId
+                                          )
+                                        ).length
+                                      }
+                                      paginate={paginate}
+                                    // totalPosts=  {(currentPosts &&
+                                    //       currentPosts
+                                    //       .filter((curData)=> curData.author.id===userId)).length> 0 &&(
+                                    //         (currentPosts &&
+                                    //       currentPosts
+                                    //       .filter((curData)=> curData.author.id===userId)).length
+                                    //       ) }
+
+                                    //                 totalPosts={(currentPosts && currentPosts.filter((curData)=> curData.author.id===userId).length>0?(
+                                    //
+                                    //                     (currentPosts&& currentPosts.filter((data)=>data.author.id===userId).length)
+                                    //
+                                    //                 ):(
+                                    //
+                                    //                   (currentPosts&& currentPosts.filter((data)=>data.author.id===userId).length)
+                                    //                 ))}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                      </Dialog>
-
-                      <div className="col-md-12 grid-margin stretch-card">
-                        <div className="card">
-                          <div className="card-body">
-                            <h4 className="card-title">All users of thehawk</h4>
-
-                            <div className="">
-                              <table>
-                                <thead>
-                                  <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Administrator</th>
-                                    <th>Author</th>
-                                    <th>Total Post made</th>
-                                    <th>All Posts</th>
-                                    <th>Actions</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {users &&
-                                    users.map((post) => (
-                                      <tr>
-                                        <td>
-                                          {post.name}{' '}
-                                          {post.isAdmin === true
-                                            ? '(Admin)'
-                                            : ''}
-                                        </td>
-                                        <td> {post.email}</td>
-                                        <td>
-                                          {post.isAdmin === true ? 'Yes' : 'No'}{' '}
-                                        </td>
-                                        <td>
-                                          {post.isAuthor === true
-                                            ? 'Yes'
-                                            : 'No'}{' '}
-                                        </td>
-                                        <td>
-                                          {postList.loading === true ? (
-                                            <ClipLoader
-                                              color="000"
-                                              loading="true"
-                                              size={54}
-                                            />
-                                          ) : (
-                                            ''
-                                          )}
-                                          {posts &&
-                                            posts.filter(
-                                              (element) =>
-                                                element.author.id === post._id
-                                            ).length > 0 && (
-                                              <div>
-                                                {posts &&
-                                                  posts.filter(
-                                                    (element) =>
-                                                      element.author.id ===
-                                                      post._id
-                                                  ).length}
-                                              </div>
-                                            )}
-                                          {posts &&
-                                            posts.filter(
-                                              (element) =>
-                                                element.author.id === post._id
-                                            ).length <= 0 ? (
-                                            <div>{'Not made any post yet'}</div>
-                                          ) : (
-                                            ''
-                                          )}
-                                        </td>
-
-                                        <td>
-                                          <Button
-                                            variant="contained"
-                                            className=" m-1"
-                                            onClick={() => viewPost(post._id)}
-                                          >
-                                            View
-                                          </Button>
-                                        </td>
-
-                                        <td>
-                                          <button
-                                            className={`btn btn-danger mb-2 ${post.isAdmin === true
-                                              ? 'cstm'
-                                              : ''
-                                              }`}
-                                            style={{
-                                              padding: ' 0.875rem 1rem',
-                                            }}
-                                            onClick={() =>
-                                              deleteHandel(post._id)
-                                            }
-                                            disabled={post.isAdmin === true}
-                                          >
-                                            Trash
-                                          </button>
-                                          <Link
-                                            className="btn btn-primary m-1"
-                                            style={{
-                                              textDecoration: 'none',
-                                              color: '#fff',
-                                              width: '100%',
-                                            }}
-                                            to={`/admin/update_users/${post._id}`}
-                                          >
-                                            Edit
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                    ))}
-                                </tbody>
-                              </table>
-                            </div>
+                            )}
+                            {/* {currentPosts &&
+                                                  currentPosts
+                                                  .filter((curData)=> curData.author.id===userId) */}
                           </div>
                         </div>
                       </div>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
+                    </div>
+                  </div>
+                </Dialog>
+
+
+                <table class="table table-sm table-border rounded ">
+                  <thead>
+                    <tr className=''>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Administrator</th>
+                      <th>Author</th>
+                      <th>Total Post made</th>
+                      <th>All Posts</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users &&
+                      users.map((post) => (
+                        <tr>
+                          <td>
+                            {post.name}{' '}
+                            {post.isAdmin === true
+                              ? '(Admin)'
+                              : ''}
+                          </td>
+                          <td> {post.email}</td>
+                          <td>
+                            {post.isAdmin === true ? 'Yes' : 'No'}{' '}
+                          </td>
+                          <td>
+                            {post.isAuthor === true
+                              ? 'Yes'
+                              : 'No'}{' '}
+                          </td>
+                          <td>
+                            {postList.loading === true ? (
+                              <ClipLoader
+                                color="000"
+                                loading="true"
+                                size={54}
+                              />
+                            ) : (
+                              ''
+                            )}
+                            {posts &&
+                              posts.filter(
+                                (element) =>
+                                  element.author.id === post._id
+                              ).length > 0 && (
+                                <div>
+                                  {posts &&
+                                    posts.filter(
+                                      (element) =>
+                                        element.author.id ===
+                                        post._id
+                                    ).length}
+                                </div>
+                              )}
+                            {posts &&
+                              posts.filter(
+                                (element) =>
+                                  element.author.id === post._id
+                              ).length <= 0 ? (
+                              <div>{'Not made any post yet'}</div>
+                            ) : (
+                              ''
+                            )}
+                          </td>
+
+                          <td>
+                            <Button
+                              variant="contained"
+                              className=" m-1"
+                              onClick={() => viewPost(post._id)}
+                            >
+                              View
+                            </Button>
+                          </td>
+
+                          <td>
+                            <button
+                              className={`btn btn-danger mb-2 ${post.isAdmin === true
+                                ? 'cstm'
+                                : ''
+                                }`}
+
+                              onClick={() =>
+                                deleteHandel(post._id)
+                              }
+                              disabled={post.isAdmin === true}
+                            >
+                              Trash
+                            </button>
+                            <Link
+                              className="btn btn-primary m-1"
+
+                              to={`/admin/update_users/${post._id}`}
+                            >
+                              Edit
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+
+              </>
+            )}
           </div>
         </div>
-      </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
     </>
   );
 }

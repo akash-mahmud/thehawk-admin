@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+
 import { endpoint } from "../config/endpoinsts";
 import { axiosRequest } from "../http/request";
 
@@ -19,7 +18,7 @@ const CurrentPool = () => {
 
   return (
     <>
-   
+
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
 

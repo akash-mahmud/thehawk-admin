@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import Header from '../components/Header';
+
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import Sidebar from '../components/Sidebar';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { listpost } from '../actions/postActions';
 import { listCategory } from '../actions/categoryActions';
@@ -83,7 +83,7 @@ function Dashboard() {
 
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
-      
+
           <div className="main-panel">
             <div className="content-wrapper">
               <div className="row">

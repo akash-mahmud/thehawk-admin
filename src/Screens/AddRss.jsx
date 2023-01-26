@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+
 import { useDispatch, useSelector } from "react-redux";
 import { listCategory } from "../actions/categoryActions";
 
@@ -60,10 +60,10 @@ function AddRss() {
   };
   return (
     <>
-    
+
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
-    
+
           <div className="main-panel">
             <div className="content-wrapper">
               <div className="row">

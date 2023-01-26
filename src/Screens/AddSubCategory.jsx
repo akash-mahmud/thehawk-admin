@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { styled } from "@mui/material/styles";
+
 import { useDispatch, useSelector } from "react-redux";
 import { listCategory } from "../actions/categoryActions";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+
 import ClipLoader from 'react-spinners/ClipLoader';
 import { axiosRequest } from "../http/request";
 import { endpoint } from "../config/endpoinsts";

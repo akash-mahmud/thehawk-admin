@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listpost } from "../actions/postActions";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";
 
@@ -21,10 +20,10 @@ function AllMedia() {
 
   return (
     <>
-    
+
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
-   
+
           <div className="main-panel">
             <div className="content-wrapper">
               <div className="row">

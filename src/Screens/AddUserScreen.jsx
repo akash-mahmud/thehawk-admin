@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+
 import { useNavigate } from "react-router-dom";
 
 import ClipLoader from "react-spinners/ClipLoader";
@@ -58,24 +57,24 @@ function AddUserScreen() {
   };
 
 
-    const imageHandler = async (e) => {
-      const file = e.target.files[0];
-      setLoad(true);
-      const formdata = new FormData();
-      formdata.append('file', file);
+  const imageHandler = async (e) => {
+    const file = e.target.files[0];
+    setLoad(true);
+    const formdata = new FormData();
+    formdata.append('file', file);
 
 
-      const { data } = await axiosRequest.post(
-        endpoint.media.single,
-        formdata
-      );
+    const { data } = await axiosRequest.post(
+      endpoint.media.single,
+      formdata
+    );
 
 
-      toast.success('Uploaded')
+    toast.success('Uploaded')
 
-      setAvatar(data?.url);
-      setLoad(false);
-    };
+    setAvatar(data?.url);
+    setLoad(false);
+  };
 
 
   useEffect(() => {
@@ -83,10 +82,10 @@ function AddUserScreen() {
   }, []);
   return (
     <>
-   
+
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
- 
+
           <div className="main-panel">
             <div className="content-wrapper">
               <div className="row">

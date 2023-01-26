@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 
-import { useAuth} from '../hooks/user-auth'
-import Swal from 'sweetalert2'
-import {  useLocation, useNavigate } from "react-router-dom";
-import { signin } from "../actions/userActions";
+import { useAuth } from '../hooks/user-auth'
+
+import { useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import BlankLayout from "../layout/BlankLayout";
 
 function LoginScreen() {
@@ -28,13 +28,13 @@ function LoginScreen() {
     }
 
   };
-  
-  
- 
-   
+
+
+
+
   return (
     <>
-    
+
 
 
       <BlankLayout>
@@ -88,7 +88,7 @@ function LoginScreen() {
           </div>
         </section>
       </BlankLayout>
-    
+
     </>
   );
 }

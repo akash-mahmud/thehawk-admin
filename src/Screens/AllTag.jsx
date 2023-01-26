@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
+
 import { endpoint } from '../config/endpoinsts'
 import { axiosRequest } from '../http/request'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -40,10 +39,10 @@ export default function AllTag() {
   }
   return (
     <>
-  
+
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
-       
+
           <div className="main-panel">
             <div className="content-wrapper">
               <div className="row">
@@ -79,7 +78,7 @@ export default function AllTag() {
 
 
                                     <td className='d-flex' style={{
-                                      borderRadius:'unset'
+                                      borderRadius: 'unset'
                                     }}>
                                       {
                                         loading ? <Skeleton /> : <>   <button

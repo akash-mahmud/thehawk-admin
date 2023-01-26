@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
+
 import { endpoint } from '../config/endpoinsts'
 import { axiosRequest } from '../http/request'
 
@@ -27,64 +26,63 @@ export default function AddTag() {
     }
 
 
-    
-  return (
-    <>
-       
-          <div className="container-scroller">
-              <div className="container-fluid page-body-wrapper">
-         
-                  <div className="main-panel">
-                      <div className="content-wrapper">
-                          <div className="row">
-                              <div className="col-sm-12">
-                                  <div className="col-12 grid-margin stretch-card">
-                                      <div className="card">
-                                          <div className="card-body">
-                                              <h4 className="card-title">Add tags</h4>
 
-                                              <form onSubmit={addTags} className="forms-sample">
-                                                  <div className="form-group">
-                                                      <label for="exampleFormControlFile1">Tags</label>
-                                                      <input
-                                                          className="form-control"
-                                                          type="text"
-                                                          placeholder="Tag name"
-                                                          onChange={(e) =>
-                                                          {
-                                                              setshowData(e.target.value)
-                                                              const tags = e.target.value.split(',')
-                                                            
-                                                              setTag(tags)
-                                                          }
-                                                          }
-                                                          value={showData}
-                                                      />
-                                                  </div>
+    return (
+        <>
 
-                                                 
-                                                 
+            <div className="container-scroller">
+                <div className="container-fluid page-body-wrapper">
 
-                                                  <button
-                                                      type="submit"
-                                                      className="btn btn-primary me-2"
-                                                      
-                                                      style={{ width: '13%' }}
-                                         
-                                                  >
-                                                      Add
-                                                  </button>
-                                              </form>
-                                           
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-    </>
-  )
+                    <div className="main-panel">
+                        <div className="content-wrapper">
+                            <div className="row">
+                                <div className="col-sm-12">
+                                    <div className="col-12 grid-margin stretch-card">
+                                        <div className="card">
+                                            <div className="card-body">
+                                                <h4 className="card-title">Add tags</h4>
+
+                                                <form onSubmit={addTags} className="forms-sample">
+                                                    <div className="form-group">
+                                                        <label for="exampleFormControlFile1">Tags</label>
+                                                        <input
+                                                            className="form-control"
+                                                            type="text"
+                                                            placeholder="Tag name"
+                                                            onChange={(e) => {
+                                                                setshowData(e.target.value)
+                                                                const tags = e.target.value.split(',')
+
+                                                                setTag(tags)
+                                                            }
+                                                            }
+                                                            value={showData}
+                                                        />
+                                                    </div>
+
+
+
+
+                                                    <button
+                                                        type="submit"
+                                                        className="btn btn-primary me-2"
+
+                                                        style={{ width: '13%' }}
+
+                                                    >
+                                                        Add
+                                                    </button>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
 }

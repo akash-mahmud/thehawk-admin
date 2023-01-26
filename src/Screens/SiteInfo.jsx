@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
-import { v4 as uuidv4 } from "uuid";
+
 
 import { useNavigate } from "react-router-dom";
 import { axiosRequest } from "../http/request";
@@ -47,7 +45,7 @@ const SiteInfo = () => {
 
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
-         
+
           <div className="main-panel">
             <div className="content-wrapper">
               <div className="row">

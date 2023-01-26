@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+
 import { useNavigate, useParams } from "react-router-dom";
 
 import ClipLoader from "react-spinners/ClipLoader";
@@ -12,8 +11,8 @@ import { allUserAction } from "../actions/userActions";
 import { axiosRequest } from "../http/request";
 import { endpoint } from "../config/endpoinsts";
 function UpdateUserScreen() {
-    const Navigate = useNavigate();
- 
+  const Navigate = useNavigate();
+
 
   const [name, setName] = useState();
   const [avatar, setAvatar] = useState();
@@ -27,12 +26,12 @@ function UpdateUserScreen() {
   const dispatch = useDispatch();
 
   const userList = useSelector((state) => state.allUsers);
-  const {  users } = userList;
+  const { users } = userList;
   useEffect(() => {
 
-      dispatch(allUserAction());
-    
-  }, [dispatch ]);
+    dispatch(allUserAction());
+
+  }, [dispatch]);
 
   const id = useParams();
 
@@ -47,7 +46,7 @@ function UpdateUserScreen() {
 
     setAvatar(data && data.avatar);
 
-    setLinkedIn(data &&data.socilaLinks &&  data.socilaLinks.linkedIn &&data.socilaLinks.linkedIn );
+    setLinkedIn(data && data.socilaLinks && data.socilaLinks.linkedIn && data.socilaLinks.linkedIn);
     setEmail(data && data.email);
     setProfessionalName(data && data.professionalName);
     setPassword(data && data.password);
@@ -111,7 +110,7 @@ function UpdateUserScreen() {
   }, []);
   return (
     <>
- 
+
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
 
